@@ -1,25 +1,25 @@
 function NavbarDropdown() {
     return (
-        <div class="dropdown">
+        <div className="dropdown">
             <button
                 style={{ width: "70px" }}
-                class="btn btn-secondary dropdown-toggle"
+                className="btn btn-secondary dropdown-toggle"
                 type="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"></button>
-            <ul class="dropdown-menu">
+            <ul className="dropdown-menu">
                 <li className="second-link">
-                    <a class="dropdown-item" href="#">
+                    <a className="dropdown-item" href="/muscle-groups">
                         Muscle Groups
                     </a>
                 </li>
                 <li className="second-link">
-                    <a class="dropdown-item" href="#">
+                    <a className="dropdown-item" href="#">
                         Exercises
                     </a>
                 </li>
                 <li>
-                    <a class="dropdown-item" href="#">
+                    <a className="dropdown-item" href="#">
                         Workouts
                     </a>
                 </li>

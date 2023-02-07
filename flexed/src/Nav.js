@@ -1,5 +1,6 @@
 import "./Nav.css";
 import NavbarDropdown from "./NavDropdown";
+import { NavLink } from "react-router-dom";
 
 function NavBar() {
     return (
@@ -11,40 +12,36 @@ function NavBar() {
                     <NavbarDropdown />
                 </div>
                 <div className="title" style={{ height: "100px" }}>
-                    <img
-                        id="light-nav-logo"
-                        src={require("./images/flexed-title-transparent.png")}
-                        alt="Flexed Mascot Logo"
-                        style={{
-                            objectFit: "contain",
-                            width: "100%",
-                            height: "100%",
-                        }}
-                    />
+                    <NavLink to="/">
+                        <img
+                            className="nav-img"
+                            id="light-nav-logo"
+                            src={require("./images/flexed-title-transparent.png")}
+                            alt="Flexed Mascot Logo"
+                        />
+                    </NavLink>
+                </div>
+                <div className="mascot" style={{ height: "100px" }}>
+                    <NavLink to="/">
+                        <img
+                            className="nav-img"
+                            id="light-nav-logo"
+                            src={require("./images/flexed-mascot-transparent.png")}
+                            alt="Flexed Mascot Logo"
+                        />
+                    </NavLink>
                 </div>
 
-                <div style={{ height: "100px", display: "flex" }}>
-                    <img
-                        id="light-nav-logo"
-                        src={require("./images/flexed-mascot-transparent.png")}
-                        alt="Flexed Mascot Logo"
-                        style={{
-                            objectFit: "contain",
-                            width: "100%",
-                            height: "100%",
-                        }}
-                    />
-                    <div
-                        class="btn-group-vertical, nav-buttons"
-                        role="group"
-                        aria-label="Vertical button group">
-                        <button type="button" class="btn btn-dark">
-                            Sign Up
-                        </button>
-                        <button type="button" class="btn btn-dark">
-                            Login
-                        </button>
-                    </div>
+                <div
+                    className="btn-group-vertical"
+                    role="group"
+                    aria-label="Vertical button group">
+                    <button type="button" className="btn btn-dark">
+                        Sign Up
+                    </button>
+                    <button type="button" className="btn btn-dark">
+                        Login
+                    </button>
                 </div>
             </div>
         </nav>
