@@ -1,5 +1,5 @@
 volumes:
-    fastapi-workout-data:
+    flexed:
         external: true
 services:
     api:
