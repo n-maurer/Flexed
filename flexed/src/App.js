@@ -1,11 +1,21 @@
 import "./App.css";
 import NavBar from "./Nav";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
+import MGMain from "./Muscle-Groups/MGMain";
+import MainPage from "./MainPage";
 
 function App() {
     return (
         <div className="App">
-            <NavBar />
+            <div>
+                <BrowserRouter>
+                    <NavBar />
+                    <Routes>
+                        <Route path="/" element={<MainPage />} />
+                        <Route path="/muscle-groups" element={<MGMain />} />
+                    </Routes>
+                </BrowserRouter>
+            </div>
         </div>
     );
 }

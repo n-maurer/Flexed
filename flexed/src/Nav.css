@@ -4,12 +4,22 @@
     }
 }
 
-.nav-buttons {
-    margin-top: 8px;
+@media screen and (min-width: 643px) {
+    .mascot {
+        display: none;
+    }
 }
+
+
 
 .second-link {
     padding-bottom: 5px;
     margin-bottom: 5px;
     border-bottom: 1px solid #DE2F35;
+}
+
+.nav-img {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
 }
