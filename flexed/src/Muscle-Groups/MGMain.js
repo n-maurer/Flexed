@@ -1,4 +1,10 @@
+import MGModal from "./CreateMGModal";
+
 function MGMain() {
-    return <>Muscle Groups</>;
+    return (
+        <>
+            <MGModal />
+        </>
+    );
 }
 export default MGMain;
