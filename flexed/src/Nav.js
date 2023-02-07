@@ -23,7 +23,7 @@ function NavBar() {
                     />
                 </div>
 
-                <div style={{ height: "100px" }}>
+                <div style={{ height: "100px", display: "flex" }}>
                     <img
                         id="light-nav-logo"
                         src={require("./images/flexed-mascot-transparent.png")}
@@ -34,6 +34,17 @@ function NavBar() {
                             height: "100%",
                         }}
                     />
+                    <div
+                        class="btn-group-vertical, nav-buttons"
+                        role="group"
+                        aria-label="Vertical button group">
+                        <button type="button" class="btn btn-dark">
+                            Sign Up
+                        </button>
+                        <button type="button" class="btn btn-dark">
+                            Login
+                        </button>
+                    </div>
                 </div>
             </div>
         </nav>

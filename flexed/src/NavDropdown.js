@@ -1,33 +1,27 @@
 function NavbarDropdown() {
     return (
-        <div class="navbar-collapse" id="navbarNavDarkDropdown">
-            <ul class="navbar-nav">
-                <li class="nav-item dropdown">
-                    <a
-                        class="nav-link dropdown-toggle"
-                        href="#"
-                        role="button"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        Dropdown
+        <div class="dropdown">
+            <button
+                style={{ width: "70px" }}
+                class="btn btn-secondary dropdown-toggle"
+                type="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"></button>
+            <ul class="dropdown-menu">
+                <li>
+                    <a class="dropdown-item" href="#">
+                        Action
                     </a>
-                    <ul class="dropdown-menu dropdown-menu-dark">
-                        <li>
-                            <a class="dropdown-item" href="#">
-                                Action
-                            </a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="#">
-                                Another action
-                            </a>
-                        </li>
-                        <li>
-                            <a class="dropdown-item" href="#">
-                                Something else here
-                            </a>
-                        </li>
-                    </ul>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="#">
+                        Another action
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="#">
+                        Something else here
+                    </a>
                 </li>
             </ul>
         </div>
