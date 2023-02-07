@@ -8,19 +8,19 @@ function NavbarDropdown() {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"></button>
             <ul class="dropdown-menu">
-                <li>
+                <li className="second-link">
                     <a class="dropdown-item" href="#">
-                        Action
+                        Muscle Groups
+                    </a>
+                </li>
+                <li className="second-link">
+                    <a class="dropdown-item" href="#">
+                        Exercises
                     </a>
                 </li>
                 <li>
                     <a class="dropdown-item" href="#">
-                        Another action
-                    </a>
-                </li>
-                <li>
-                    <a class="dropdown-item" href="#">
-                        Something else here
+                        Workouts
                     </a>
                 </li>
             </ul>

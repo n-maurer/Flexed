@@ -7,3 +7,9 @@
 .nav-buttons {
     margin-top: 8px;
 }
+
+.second-link {
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #DE2F35;
+}
