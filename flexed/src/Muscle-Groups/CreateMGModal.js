@@ -6,7 +6,7 @@ function MGModal() {
                 className="btn btn-dark"
                 data-bs-toggle="modal"
                 data-bs-target="#staticBackdrop">
-                Create Muscle Group
+                Add Muscle Group
             </button>
             <div
                 className="modal fade"
@@ -36,7 +36,7 @@ function MGModal() {
                                     <label
                                         htmlFor="recipient-name"
                                         className="col-form-label">
-                                        Name:
+                                        Muscle Group Name:
                                     </label>
                                     <input
                                         type="text"
@@ -52,7 +52,7 @@ function MGModal() {
                                     <select
                                         className="form-select"
                                         id="inputGroupSelect01">
-                                        <option value>Choose...</option>
+                                        <option value>Choose Account ID</option>
                                         <option value="1">One</option>
                                         <option value="2">Two</option>
                                         <option value="3">Three</option>
