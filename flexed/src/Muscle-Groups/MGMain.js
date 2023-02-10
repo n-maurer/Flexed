@@ -1,10 +1,7 @@
-import MGModal from "./CreateMGModal";
+import { useGetMuscleGroupsQuery } from "../flexedApi";
 
-function MGMain() {
-    return (
-        <>
-            <MGModal />
-        </>
-    );
+export default function MGMain() {
+    const { data, error, isLoading } = useGetMuscleGroupsQuery();
+    // console.log(data);
+    return <></>;
 }
-export default MGMain;
