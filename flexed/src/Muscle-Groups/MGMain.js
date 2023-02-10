@@ -1,4 +1,4 @@
-import { useGetMuscleGroupsQuery } from "../flexedApi";
+import { useGetMuscleGroupsQuery } from "./muscleGroupApi";
 
 export default function MGMain() {
     const { data, error, isLoading } = useGetMuscleGroupsQuery();

@@ -1,13 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { flexedApi } from "./flexedApi";
+import { muscleGroupApi } from "./Muscle-Groups/muscleGroupApi";
 import { setupListeners } from "@reduxjs/toolkit/dist/query";
 
 export const store = configureStore({
     reducer: {
-        [flexedApi.reducerPath]: flexedApi.reducer,
+        [muscleGroupApi.reducerPath]: muscleGroupApi.reducer,
     },
     middleware: (getDefaultMiddleware) =>
-        getDefaultMiddleware().concat(flexedApi.middleware),
+        getDefaultMiddleware().concat(muscleGroupApi.middleware),
 });
 
 setupListeners(store.dispatch);
