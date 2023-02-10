@@ -49,7 +49,7 @@ class MuscleGroupRepository:
                         """
                         SELECT id, name
                         FROM muscle_groups
-                        ORDER BY id;
+                        ORDER BY name;
                         """
                     )
                     return[

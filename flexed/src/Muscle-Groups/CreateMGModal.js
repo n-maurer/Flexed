@@ -6,16 +6,26 @@ import { useState } from "react";
 function MGModal() {
     const navigate = useNavigate();
     const [error, setError] = useState("");
-    const [createMuscleGroup, result] = useCreateMuscleGroupMutation;
+    const [createMuscleGroup, result] = useCreateMuscleGroupMutation();
+    const [muscleGroup, setMuscleGroup] = useState({
+        name: "",
+    });
+
+    const handleChange = (event) => {
+        setMuscleGroup({
+            ...muscleGroup,
+            [event.target.name]: event.target.value,
+        });
+    };
 
     async function handleSubmit(e) {
         e.preventDefault();
-        createMuscleGroup("PUT REAL DATA IN, LIKE NAME, ETC");
+        createMuscleGroup({ name: muscleGroup.name });
     }
     if (result.isSuccess) {
-        navigate("/muscle-groups");
+        console.log("success");
     } else if (result.isError) {
-        setError(result.error);
+        console.log("error");
     }
 
     return (
@@ -50,7 +60,7 @@ function MGModal() {
                                 aria-label="Close"></button>
                         </div>
                         <div className="modal-body">
-                            <form onSubmit={handleSubmit()}>
+                            <form onSubmit={handleSubmit}>
                                 <div className="mb-3">
                                     <label
                                         htmlFor="recipient-name"
@@ -58,17 +68,23 @@ function MGModal() {
                                         Muscle Group Name:
                                     </label>
                                     <input
+                                        value={muscleGroup.name}
+                                        name="name"
+                                        onChange={handleChange}
                                         type="text"
                                         className="form-control"
                                     />
                                 </div>
-                                <div className="input-group mb-3">
+                                {/* <div className="input-group mb-3">
                                     <label
                                         className="input-group-text"
                                         htmlFor="inputGroupSelect01">
                                         Options
                                     </label>
                                     <select
+                                        value={muscleGroup.account_id}
+                                        name="account_id"
+                                        onChange={handleChange}
                                         className="form-select"
                                         id="inputGroupSelect01">
                                         <option value>Choose Account ID</option>
@@ -76,19 +92,22 @@ function MGModal() {
                                         <option value="2">Two</option>
                                         <option value="3">Three</option>
                                     </select>
+                                </div> */}
+                                <div className="modal-footer">
+                                    {/* <button
+                                        type="button"
+                                        className="btn btn-secondary"
+                                        data-bs-dismiss="modal">
+                                        Close
+                                    </button> */}
+                                    <button
+                                        type="submit"
+                                        data-bs-dismiss="modal"
+                                        className="btn btn-primary">
+                                        Create
+                                    </button>
                                 </div>
                             </form>
-                        </div>
-                        <div className="modal-footer">
-                            <button
-                                type="button"
-                                className="btn btn-secondary"
-                                data-bs-dismiss="modal">
-                                Close
-                            </button>
-                            <button type="button" className="btn btn-primary">
-                                Understood
-                            </button>
                         </div>
                     </div>
                 </div>
