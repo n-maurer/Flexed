@@ -1,4 +1,23 @@
+import { Navigate } from "react-router-dom";
+import { useCreateMuscleGroupMutation } from "./muscleGroupApi";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+
 function MGModal() {
+    const navigate = useNavigate();
+    const [error, setError] = useState("");
+    const [createMuscleGroup, result] = useCreateMuscleGroupMutation;
+
+    async function handleSubmit(e) {
+        e.preventDefault();
+        createMuscleGroup("PUT REAL DATA IN, LIKE NAME, ETC");
+    }
+    if (result.isSuccess) {
+        navigate("/muscle-groups");
+    } else if (result.isError) {
+        setError(result.error);
+    }
+
     return (
         <>
             <button
@@ -31,7 +50,7 @@ function MGModal() {
                                 aria-label="Close"></button>
                         </div>
                         <div className="modal-body">
-                            <form>
+                            <form onSubmit={handleSubmit()}>
                                 <div className="mb-3">
                                     <label
                                         htmlFor="recipient-name"

@@ -5,9 +5,11 @@ export const muscleGroupApi = createApi({
     baseQuery: fetchBaseQuery({
         baseUrl: process.env.REACT_APP_FLEXED_SERVICE_API_HOST,
     }),
+    tagTypes: ["MuscleGroupList"],
     endpoints: (builder) => ({
         getMuscleGroups: builder.query({
             query: () => "/muscle-groups",
+            providesTags: ["MuscleGroupList"],
         }),
         createMuscleGroup: builder.mutation({
             query: (data) => ({
@@ -15,6 +17,7 @@ export const muscleGroupApi = createApi({
                 body: data,
                 method: "post",
             }),
+            invalidatesTags: ["MuscleGroupList"],
         }),
     }),
 });
