@@ -14,7 +14,7 @@ function NavbarDropdown() {
                     </a>
                 </li>
                 <li className="second-link">
-                    <a className="dropdown-item" href="#">
+                    <a className="dropdown-item" href="/exercises">
                         Exercises
                     </a>
                 </li>

@@ -32,7 +32,7 @@ function MGModal() {
         <>
             <button
                 type="button"
-                className="btn btn-dark"
+                className="btn btn-dark cards"
                 data-bs-toggle="modal"
                 data-bs-target="#staticBackdrop">
                 Add Muscle Group
@@ -94,12 +94,12 @@ function MGModal() {
                                     </select>
                                 </div> */}
                                 <div className="modal-footer">
-                                    {/* <button
+                                    <button
                                         type="button"
                                         className="btn btn-secondary"
                                         data-bs-dismiss="modal">
                                         Close
-                                    </button> */}
+                                    </button>
                                     <button
                                         type="submit"
                                         data-bs-dismiss="modal"

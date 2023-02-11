@@ -29,7 +29,7 @@ export default function MGMain() {
                                             <a
                                                 href="#"
                                                 className="btn btn-primary">
-                                                View Chest Exercises
+                                                View {mg.name} Exercises
                                             </a>
                                         </div>
                                     </div>
