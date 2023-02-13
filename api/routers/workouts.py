@@ -51,4 +51,4 @@ def get_exercises_by_workout_id(
     repo: WorkoutsRepository = Depends(),
 ):
     workout_name = repo.get_workout_name_by_id(workout_id)
-    return {workout_name["name"]: repo.get_exercises_by_workout(workout_id)}
+    return {"exercises": repo.get_exercises_by_workout(workout_id)}

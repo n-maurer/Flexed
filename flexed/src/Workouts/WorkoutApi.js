@@ -19,6 +19,23 @@ export const workoutApi = createApi({
             }),
             invalidatesTags: ["WorkoutList"],
         }),
+        getExerciseByWorkout: builder.query({
+            query: (id) => `/workouts/${id}`,
+            providesTags: ["WorkoutList"],
+        }),
+        addExercise: builder.mutation({
+            query: (data) => ({
+                url: "we-table",
+                body: data,
+                method: "post",
+            }),
+            invalidatesTags: ["WorkoutList"],
+        }),
     }),
 });
-export const { useGetWorkoutsQuery, useCreateWorkoutMutation } = workoutApi;
+export const {
+    useGetWorkoutsQuery,
+    useCreateWorkoutMutation,
+    useGetExerciseByWorkoutQuery,
+    useAddExerciseMutation,
+} = workoutApi;

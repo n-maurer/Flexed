@@ -133,6 +133,7 @@ class WorkoutsRepository:
                     LEFT JOIN muscle_groups AS m
                         ON (e.muscle_group_id = m.id)
                     WHERE workout_id = %s
+                    ORDER by exercise
                     """,
                     params,
                 )
