@@ -75,24 +75,6 @@ function MGModal() {
                                         className="form-control"
                                     />
                                 </div>
-                                {/* <div className="input-group mb-3">
-                                    <label
-                                        className="input-group-text"
-                                        htmlFor="inputGroupSelect01">
-                                        Options
-                                    </label>
-                                    <select
-                                        value={muscleGroup.account_id}
-                                        name="account_id"
-                                        onChange={handleChange}
-                                        className="form-select"
-                                        id="inputGroupSelect01">
-                                        <option value>Choose Account ID</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
-                                    </select>
-                                </div> */}
                                 <div className="modal-footer">
                                     <button
                                         type="button"
