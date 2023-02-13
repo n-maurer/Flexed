@@ -4,6 +4,7 @@ import { Routes, Route, BrowserRouter } from "react-router-dom";
 import MGMain from "./Muscle-Groups/MGMain";
 import MainPage from "./MainPage";
 import ExerciseMain from "./Exercises/ExerciseMain";
+import WorkoutMain from "./Workouts/WorkoutMain";
 
 function App() {
     return (
@@ -15,6 +16,7 @@ function App() {
                         <Route path="/" element={<MainPage />} />
                         <Route path="/muscle-groups" element={<MGMain />} />
                         <Route path="/exercises" element={<ExerciseMain />} />
+                        <Route path="/workouts" element={<WorkoutMain />} />
                     </Routes>
                 </BrowserRouter>
             </div>

@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-export const exerciseGroupApi = createApi({
+export const exerciseApi = createApi({
     reducerPath: "exercises",
     baseQuery: fetchBaseQuery({
         baseUrl: process.env.REACT_APP_FLEXED_SERVICE_API_HOST,
@@ -21,5 +21,4 @@ export const exerciseGroupApi = createApi({
         }),
     }),
 });
-export const { useGetExercisesQuery, useCreateExerciseMutation } =
-    exerciseGroupApi;
+export const { useGetExercisesQuery, useCreateExerciseMutation } = exerciseApi;

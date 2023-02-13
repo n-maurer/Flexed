@@ -2,7 +2,7 @@ import "./MG.css";
 import { useGetMuscleGroupsQuery } from "./muscleGroupApi";
 import MGModal from "./CreateMGModal";
 
-export default function MGMain() {
+function MGMain() {
     const { data, error, isLoading } = useGetMuscleGroupsQuery();
 
     return (
@@ -42,3 +42,4 @@ export default function MGMain() {
         </>
     );
 }
+export default MGMain;

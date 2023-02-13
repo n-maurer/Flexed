@@ -19,7 +19,7 @@ function NavbarDropdown() {
                     </a>
                 </li>
                 <li>
-                    <a className="dropdown-item" href="#">
+                    <a className="dropdown-item" href="/workouts">
                         Workouts
                     </a>
                 </li>

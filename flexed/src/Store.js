@@ -1,17 +1,20 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { muscleGroupApi } from "./Muscle-Groups/muscleGroupApi";
 import { setupListeners } from "@reduxjs/toolkit/dist/query";
-import { exerciseGroupApi } from "./Exercises/ExerciseApi";
+import { exerciseApi } from "./Exercises/ExerciseApi";
+import { workoutApi } from "./Workouts/WorkoutApi";
 
 export const store = configureStore({
     reducer: {
         [muscleGroupApi.reducerPath]: muscleGroupApi.reducer,
-        [exerciseGroupApi.reducerPath]: exerciseGroupApi.reducer,
+        [exerciseApi.reducerPath]: exerciseApi.reducer,
+        [workoutApi.reducerPath]: workoutApi.reducer,
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware()
             .concat(muscleGroupApi.middleware)
-            .concat(exerciseGroupApi.middleware),
+            .concat(exerciseApi.middleware)
+            .concat(workoutApi.middleware),
 });
 
 setupListeners(store.dispatch);
