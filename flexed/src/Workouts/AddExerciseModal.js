@@ -5,23 +5,46 @@ import { useState } from "react";
 import MultiSelect from "react-multiple-select-dropdown-lite";
 import Select from "react-select";
 import { useGetExercisesQuery } from "../Exercises/ExerciseApi";
+import { useGetMuscleGroupsQuery } from "../Muscle-Groups/muscleGroupApi";
 
 function AddExerciseModal() {
-    const { data, error, isLoading } = useGetExercisesQuery();
+    const {
+        data: exerciseData,
+        error: exerciseError,
+        isLoading: exerciseLoading,
+    } = useGetExercisesQuery();
+    const {
+        data: mgData,
+        error: mgError,
+        isLoading: mgLoading,
+    } = useGetMuscleGroupsQuery();
+
     const navigate = useNavigate();
-    // const [error, setError] = useState("");
     const [createWE, result] = useAddExerciseMutation();
     const [wERelationshipList, setwERelationship] = useState([]);
-    const options = [];
-    const newData = data;
-    if (newData) {
-        for (let x in newData["exercises"]) {
+    const exerciseOptions = [];
+    const mgOptions = [];
+
+    console.log(mgData);
+
+    if (mgData) {
+        for (let x in mgData["muscle_groups"]) {
             let option = {
-                value: newData["exercises"][x]["id"],
-                label: newData["exercises"][x]["name"],
-                mg: newData["exercises"][x]["muscle_group"],
+                value: mgData["muscle_groups"][x]["id"],
+                label: mgData["muscle_groups"][x]["name"],
             };
-            options.push(option);
+            mgOptions.push(option);
+        }
+    }
+
+    if (exerciseData) {
+        for (let x in exerciseData["exercises"]) {
+            let option = {
+                value: exerciseData["exercises"][x]["id"],
+                label: exerciseData["exercises"][x]["name"],
+                mg: exerciseData["exercises"][x]["muscle_group"],
+            };
+            exerciseOptions.push(option);
         }
     }
 
@@ -95,14 +118,47 @@ function AddExerciseModal() {
                                         className="form-control"
                                     />
                                 </div>
-                                <Select
-                                    options={options}
-                                    isMulti
-                                    name="colors"
-                                    className="basic-multi-select"
-                                    classNamePrefix="select"
-                                />
-
+                                <div className="mb-3">
+                                    {mgLoading ? (
+                                        <div className="d-flex justify-content-center">
+                                            <div
+                                                className="spinner-border"
+                                                role="status">
+                                                <span className="visually-hidden">
+                                                    Loading...
+                                                </span>
+                                            </div>
+                                        </div>
+                                    ) : (
+                                        <Select
+                                            options={mgOptions}
+                                            name="mgs"
+                                            className="basic-multi-select"
+                                            classNamePrefix="select"
+                                        />
+                                    )}
+                                </div>
+                                <div className="mb-3">
+                                    {exerciseLoading ? (
+                                        <div className="d-flex justify-content-center">
+                                            <div
+                                                className="spinner-border"
+                                                role="status">
+                                                <span className="visually-hidden">
+                                                    Loading...
+                                                </span>
+                                            </div>
+                                        </div>
+                                    ) : (
+                                        <Select
+                                            options={exerciseOptions}
+                                            isMulti
+                                            name="exercises"
+                                            className="basic-multi-select"
+                                            classNamePrefix="select"
+                                        />
+                                    )}
+                                </div>
                                 <div className="modal-footer">
                                     <button
                                         type="button"

@@ -14,3 +14,6 @@ Put stuff at bottom of page like links
 
 Landing page idea
 https://getbootstrap.com/docs/4.0/examples/carousel/
+
+Select Stuff
+https://react-select.com/home
