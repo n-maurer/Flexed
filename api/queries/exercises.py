@@ -61,7 +61,7 @@ class ExerciseRepository:
             with conn.cursor() as cur:
                 cur.execute(
                     """
-                    SELECT e.id, e.account_id, e.name, m.name AS muscle_group, e.reps, e.sets, e.duration
+                    SELECT e.id, e.account_id, e.name, m.id AS muscle_group_id, m.name AS muscle_group, e.reps, e.sets, e.duration
                     FROM exercises AS e
                     LEFT JOIN muscle_groups AS m
                         ON (e.muscle_group_id = m.id)
