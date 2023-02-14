@@ -25,8 +25,6 @@ function AddExerciseModal() {
     const exerciseOptions = [];
     const mgOptions = [];
 
-    console.log(mgData);
-
     if (mgData) {
         for (let x in mgData["muscle_groups"]) {
             let option = {
@@ -135,6 +133,7 @@ function AddExerciseModal() {
                                             name="mgs"
                                             className="basic-multi-select"
                                             classNamePrefix="select"
+                                            placeholder="Select Muscle Group"
                                         />
                                     )}
                                 </div>
@@ -156,6 +155,7 @@ function AddExerciseModal() {
                                             name="exercises"
                                             className="basic-multi-select"
                                             classNamePrefix="select"
+                                            placeholder="Select Exercises"
                                         />
                                     )}
                                 </div>

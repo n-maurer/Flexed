@@ -17,7 +17,7 @@ function WOCard(props) {
                     <div className="cards">
                         <div className="">
                             {data?.exercises.map((ex) => {
-                                return <li>{ex.exercise}</li>;
+                                return <li key={ex.id}>{ex.exercise}</li>;
                             })}
                         </div>
                         <AddExerciseModal />
