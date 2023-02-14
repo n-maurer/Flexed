@@ -1,7 +1,7 @@
 import { Navigate } from "react-router-dom";
 import { useAddExerciseMutation } from "./WorkoutApi";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import MultiSelect from "react-multiple-select-dropdown-lite";
 import Select from "react-select";
 import { useGetExercisesQuery } from "../Exercises/ExerciseApi";
@@ -22,23 +22,23 @@ function AddExerciseModal() {
     const navigate = useNavigate();
     const [createWE, result] = useAddExerciseMutation();
     const [wERelationshipList, setwERelationship] = useState([]);
-    const exerciseOptions = [];
-    const [exerciseStateOptions, setExerciseStateOptions] = useState([]);
+    let exerciseOptions = [];
     const mgOptions = [];
     const [mgId, setMGId] = useState();
 
+    // useEffect(() => {
     if (exerciseData) {
-        console.log(exerciseData);
         for (let x in exerciseData["exercises"]) {
             let option = {
                 value: exerciseData["exercises"][x]["id"],
                 label: exerciseData["exercises"][x]["name"],
-                mg: exerciseData["exercises"][x]["muscle_group"],
+                mg: exerciseData["exercises"][x]["muscle_group_id"],
             };
-            exerciseOptions.push(option);
+            if (exerciseOptions.includes(option) === false) {
+                exerciseOptions.push(option);
+            }
         }
     }
-
     if (mgData) {
         for (let x in mgData["muscle_groups"]) {
             let option = {
@@ -48,6 +48,7 @@ function AddExerciseModal() {
             mgOptions.push(option);
         }
     }
+    // }, [mgOptions]);
 
     const handleChange = (event) => {
         setwERelationship({
@@ -55,12 +56,12 @@ function AddExerciseModal() {
             [event.target.name]: event.target.value,
         });
     };
-    const handleMGSelectChange = (seletedOption) => {
+    const handleMGSelectChange = async (seletedOption) => {
+        let x = exerciseOptions;
         setMGId(seletedOption.value);
-        console.log(exerciseOptions);
-        setExerciseStateOptions(exerciseOptions.filter((ex) => ex.mg == mgId));
+        exerciseOptions = exerciseOptions.filter((ex) => ex.mg == mgId);
     };
-
+    console.log(exerciseOptions);
     async function handleSubmit(e) {
         e.preventDefault();
         for (let x in wERelationshipList) {
