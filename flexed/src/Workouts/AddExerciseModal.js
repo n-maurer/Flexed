@@ -23,7 +23,21 @@ function AddExerciseModal() {
     const [createWE, result] = useAddExerciseMutation();
     const [wERelationshipList, setwERelationship] = useState([]);
     const exerciseOptions = [];
+    const [exerciseStateOptions, setExerciseStateOptions] = useState([]);
     const mgOptions = [];
+    const [mgId, setMGId] = useState();
+
+    if (exerciseData) {
+        console.log(exerciseData);
+        for (let x in exerciseData["exercises"]) {
+            let option = {
+                value: exerciseData["exercises"][x]["id"],
+                label: exerciseData["exercises"][x]["name"],
+                mg: exerciseData["exercises"][x]["muscle_group"],
+            };
+            exerciseOptions.push(option);
+        }
+    }
 
     if (mgData) {
         for (let x in mgData["muscle_groups"]) {
@@ -35,22 +49,16 @@ function AddExerciseModal() {
         }
     }
 
-    if (exerciseData) {
-        for (let x in exerciseData["exercises"]) {
-            let option = {
-                value: exerciseData["exercises"][x]["id"],
-                label: exerciseData["exercises"][x]["name"],
-                mg: exerciseData["exercises"][x]["muscle_group"],
-            };
-            exerciseOptions.push(option);
-        }
-    }
-
     const handleChange = (event) => {
         setwERelationship({
             ...wERelationshipList,
             [event.target.name]: event.target.value,
         });
+    };
+    const handleMGSelectChange = (seletedOption) => {
+        setMGId(seletedOption.value);
+        console.log(exerciseOptions);
+        setExerciseStateOptions(exerciseOptions.filter((ex) => ex.mg == mgId));
     };
 
     async function handleSubmit(e) {
@@ -76,7 +84,7 @@ function AddExerciseModal() {
                 className="btn btn-dark cards"
                 data-bs-toggle="modal"
                 data-bs-target="#add-ex-modal">
-                Add Workout
+                Add Exercises
             </button>
             <div
                 className="modal fade"
@@ -129,6 +137,7 @@ function AddExerciseModal() {
                                         </div>
                                     ) : (
                                         <Select
+                                            onChange={handleMGSelectChange}
                                             options={mgOptions}
                                             name="mgs"
                                             className="basic-multi-select"
@@ -137,28 +146,33 @@ function AddExerciseModal() {
                                         />
                                     )}
                                 </div>
-                                <div className="mb-3">
-                                    {exerciseLoading ? (
-                                        <div className="d-flex justify-content-center">
-                                            <div
-                                                className="spinner-border"
-                                                role="status">
-                                                <span className="visually-hidden">
-                                                    Loading...
-                                                </span>
+                                {mgId ? (
+                                    <div className="mb-3">
+                                        {exerciseLoading ? (
+                                            <div className="d-flex justify-content-center">
+                                                <div
+                                                    className="spinner-border"
+                                                    role="status">
+                                                    <span className="visually-hidden">
+                                                        Loading...
+                                                    </span>
+                                                </div>
                                             </div>
-                                        </div>
-                                    ) : (
-                                        <Select
-                                            options={exerciseOptions}
-                                            isMulti
-                                            name="exercises"
-                                            className="basic-multi-select"
-                                            classNamePrefix="select"
-                                            placeholder="Select Exercises"
-                                        />
-                                    )}
-                                </div>
+                                        ) : (
+                                            <Select
+                                                options={exerciseOptions}
+                                                isMulti
+                                                name="exercises"
+                                                className="basic-multi-select"
+                                                classNamePrefix="select"
+                                                placeholder="Select Exercises"
+                                            />
+                                        )}
+                                    </div>
+                                ) : (
+                                    <></>
+                                )}
+
                                 <div className="modal-footer">
                                     <button
                                         type="button"
