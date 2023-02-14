@@ -2,12 +2,28 @@ import { Navigate } from "react-router-dom";
 import { useAddExerciseMutation } from "./WorkoutApi";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import MultiSelect from "react-multiple-select-dropdown-lite";
+import Select from "react-select";
+import { useGetExercisesQuery } from "../Exercises/ExerciseApi";
 
 function AddExerciseModal() {
+    const { data, error, isLoading } = useGetExercisesQuery();
     const navigate = useNavigate();
-    const [error, setError] = useState("");
+    // const [error, setError] = useState("");
     const [createWE, result] = useAddExerciseMutation();
     const [wERelationshipList, setwERelationship] = useState([]);
+    const options = [];
+    const newData = data;
+    if (newData) {
+        for (let x in newData["exercises"]) {
+            let option = {
+                value: newData["exercises"][x]["id"],
+                label: newData["exercises"][x]["name"],
+                mg: newData["exercises"][x]["muscle_group"],
+            };
+            options.push(option);
+        }
+    }
 
     const handleChange = (event) => {
         setwERelationship({
@@ -79,16 +95,14 @@ function AddExerciseModal() {
                                         className="form-control"
                                     />
                                 </div>
-                                <select
-                                    class="form-select form-select-sm"
-                                    aria-label=".form-select-sm example">
-                                    <option selected>
-                                        Open this select menu
-                                    </option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                </select>
+                                <Select
+                                    options={options}
+                                    isMulti
+                                    name="colors"
+                                    className="basic-multi-select"
+                                    classNamePrefix="select"
+                                />
+
                                 <div className="modal-footer">
                                     <button
                                         type="button"
