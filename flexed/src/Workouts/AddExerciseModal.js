@@ -1,32 +1,28 @@
-import { Navigate } from "react-router-dom";
 import { useAddExerciseMutation } from "./WorkoutApi";
-import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
-import MultiSelect from "react-multiple-select-dropdown-lite";
+import { useState } from "react";
 import Select from "react-select";
 import { useGetExercisesQuery } from "../Exercises/ExerciseApi";
 import { useGetMuscleGroupsQuery } from "../Muscle-Groups/muscleGroupApi";
 
-function AddExerciseModal() {
+function AddExerciseModal(props) {
+    let cardId = props.wo;
     const {
         data: exerciseData,
-        error: exerciseError,
+
         isLoading: exerciseLoading,
     } = useGetExercisesQuery();
     const {
         data: mgData,
-        error: mgError,
+
         isLoading: mgLoading,
     } = useGetMuscleGroupsQuery();
 
-    const navigate = useNavigate();
     const [createWE, result] = useAddExerciseMutation();
     const [wERelationshipList, setwERelationship] = useState([]);
     let exerciseOptions = [];
     const mgOptions = [];
     const [mgId, setMGId] = useState();
 
-    // useEffect(() => {
     if (exerciseData) {
         for (let x in exerciseData["exercises"]) {
             let option = {
@@ -48,48 +44,40 @@ function AddExerciseModal() {
             mgOptions.push(option);
         }
     }
-    // }, [mgOptions]);
-
-    const handleChange = (event) => {
-        setwERelationship({
-            ...wERelationshipList,
-            [event.target.name]: event.target.value,
-        });
+    const handleWERChange = (action) => {
+        setwERelationship(action);
     };
-    const handleMGSelectChange = async (seletedOption) => {
-        let x = exerciseOptions;
+    const handleMGSelectChange = (seletedOption) => {
         setMGId(seletedOption.value);
-        exerciseOptions = exerciseOptions.filter((ex) => ex.mg == mgId);
     };
-    console.log(exerciseOptions);
+
     async function handleSubmit(e) {
         e.preventDefault();
         for (let x in wERelationshipList) {
             createWE({
-                workout_id: 1,
-                exercise_id: wERelationshipList[x],
+                workout_id: props.wo,
+                exercise_id: wERelationshipList[x]["value"],
                 account_id: 1,
             });
         }
     }
-    if (result.isSuccess) {
-        console.log("success");
-    } else if (result.isError) {
+    if (result.isError) {
         console.log("error");
     }
-
+    let hashTarget = `#f${props.wo}`;
+    let target = `f${props.wo}`;
     return (
         <>
             <button
                 type="button"
                 className="btn btn-dark cards"
                 data-bs-toggle="modal"
-                data-bs-target="#add-ex-modal">
-                Add Exercises
+                data-bs-target={hashTarget}>
+                Add Exercises{cardId}
             </button>
             <div
                 className="modal fade"
-                id="add-ex-modal"
+                id={target}
                 data-bs-backdrop="static"
                 data-bs-keyboard="false"
                 tabIndex="-1"
@@ -101,7 +89,7 @@ function AddExerciseModal() {
                             <h1
                                 className="modal-title fs-5"
                                 id="add-ex-modalLabel">
-                                Test
+                                Add Exercise to Workout{cardId}
                             </h1>
                             <button
                                 type="button"
@@ -111,20 +99,6 @@ function AddExerciseModal() {
                         </div>
                         <div className="modal-body">
                             <form onSubmit={handleSubmit}>
-                                <div className="mb-3">
-                                    <label
-                                        htmlFor="recipient-name"
-                                        className="col-form-label">
-                                        Exercise:
-                                    </label>
-                                    <input
-                                        // value={workout.name}
-                                        name="name"
-                                        onChange={handleChange}
-                                        type="text"
-                                        className="form-control"
-                                    />
-                                </div>
                                 <div className="mb-3">
                                     {mgLoading ? (
                                         <div className="d-flex justify-content-center">
@@ -161,7 +135,10 @@ function AddExerciseModal() {
                                             </div>
                                         ) : (
                                             <Select
-                                                options={exerciseOptions}
+                                                onChange={handleWERChange}
+                                                options={exerciseOptions.filter(
+                                                    (eo) => eo.mg === mgId
+                                                )}
                                                 isMulti
                                                 name="exercises"
                                                 className="basic-multi-select"

@@ -22,9 +22,7 @@ function WorkoutModal() {
         e.preventDefault();
         createWorkout({ name: workout.name, account_id: 1 });
     }
-    if (result.isSuccess) {
-        console.log("success");
-    } else if (result.isError) {
+    if (result.isError) {
         console.log("error");
     }
 

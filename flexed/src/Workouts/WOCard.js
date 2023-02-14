@@ -6,7 +6,6 @@ function WOCard(props) {
         props.wo.id
     );
     let propsId = toString(props.wo.id);
-    // console.log(data);
 
     return (
         <div className="col" key={props.wo.id}>
@@ -20,7 +19,7 @@ function WOCard(props) {
                                 return <li key={ex.id}>{ex.exercise}</li>;
                             })}
                         </div>
-                        <AddExerciseModal />
+                        <AddExerciseModal wo={props.wo.id} />
                     </div>
                 </div>
             </div>
