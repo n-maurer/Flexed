@@ -17,3 +17,4 @@ https://getbootstrap.com/docs/4.0/examples/carousel/
 
 Select Stuff
 https://react-select.com/home
+good video for Select: https://www.youtube.com/watch?v=3u_ulMvTYZI

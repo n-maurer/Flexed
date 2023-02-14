@@ -5,7 +5,6 @@ import { useGetExercisesQuery } from "../Exercises/ExerciseApi";
 import { useGetMuscleGroupsQuery } from "../Muscle-Groups/muscleGroupApi";
 
 function AddExerciseModal(props) {
-    let cardId = props.wo;
     const {
         data: exerciseData,
 
@@ -73,7 +72,7 @@ function AddExerciseModal(props) {
                 className="btn btn-dark cards"
                 data-bs-toggle="modal"
                 data-bs-target={hashTarget}>
-                Add Exercises{cardId}
+                Add Exercises
             </button>
             <div
                 className="modal fade"
@@ -89,7 +88,7 @@ function AddExerciseModal(props) {
                             <h1
                                 className="modal-title fs-5"
                                 id="add-ex-modalLabel">
-                                Add Exercise to Workout{cardId}
+                                Add Exercise to {props.wo_name} Workout
                             </h1>
                             <button
                                 type="button"
@@ -162,7 +161,7 @@ function AddExerciseModal(props) {
                                         type="submit"
                                         data-bs-dismiss="modal"
                                         className="btn btn-primary">
-                                        Create
+                                        Add
                                     </button>
                                 </div>
                             </form>

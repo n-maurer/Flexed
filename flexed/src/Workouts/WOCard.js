@@ -19,7 +19,10 @@ function WOCard(props) {
                                 return <li key={ex.id}>{ex.exercise}</li>;
                             })}
                         </div>
-                        <AddExerciseModal wo={props.wo.id} />
+                        <AddExerciseModal
+                            wo={props.wo.id}
+                            wo_name={props.wo.name}
+                        />
                     </div>
                 </div>
             </div>
