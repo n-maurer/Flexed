@@ -19,7 +19,14 @@ export const workoutDateApi = createApi({
             }),
             invalidatesTags: ["workoutDate"],
         }),
+        getWorkoutByDate: builder.query({
+            query: (date) => `workout-date/${date}`,
+            providesTags: ["workoutDate"],
+        }),
     }),
 });
-export const { useWorkoutDatesQuery, useCreateWorkoutDateMutation } =
-    workoutDateApi;
+export const {
+    useWorkoutDatesQuery,
+    useCreateWorkoutDateMutation,
+    useGetWorkoutByDateQuery,
+} = workoutDateApi;

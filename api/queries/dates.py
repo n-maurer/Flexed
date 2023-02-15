@@ -74,6 +74,30 @@ class DateWorkoutRepository:
 
                 return results
 
+    def get_by_date(self, date: str) -> DateWorkoutOut:
+         with pool.connection() as conn:
+            with conn.cursor() as cur:
+                cur.execute(
+                    """
+                    SELECT d.id, d.workout_id, d.account_id, w.name, d.wo_date
+                    FROM workouts_date AS d
+                    LEFT JOIN workouts AS w
+                        ON (d.workout_id = w.id)
+                    WHERE d.wo_date = %s
+                    ORDER BY d.id, d.workout_id, d.account_id, w.name, d.wo_date
+                    """,
+                    [date]
+                )
+
+                results = []
+                for row in cur.fetchall():
+                    record = {}
+                    for i, column in enumerate(cur.description):
+                        record[column.name] = row[i]
+                    results.append(record)
+
+                return results
+
 
     def delete(self, wd_id: int) -> bool:
         try:

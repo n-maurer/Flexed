@@ -5,16 +5,9 @@ import { useGetExercisesQuery } from "../Exercises/ExerciseApi";
 import { useGetMuscleGroupsQuery } from "../Muscle-Groups/muscleGroupApi";
 
 function AddExerciseModal(props) {
-    const {
-        data: exerciseData,
-
-        isLoading: exerciseLoading,
-    } = useGetExercisesQuery();
-    const {
-        data: mgData,
-
-        isLoading: mgLoading,
-    } = useGetMuscleGroupsQuery();
+    const { data: exerciseData, isLoading: exerciseLoading } =
+        useGetExercisesQuery();
+    const { data: mgData, isLoading: mgLoading } = useGetMuscleGroupsQuery();
 
     const [createWE, result] = useAddExerciseMutation();
     const [wERelationshipList, setwERelationship] = useState([]);

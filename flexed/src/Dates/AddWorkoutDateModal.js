@@ -1,26 +1,26 @@
-import { Navigate } from "react-router-dom";
 import { useCreateWorkoutDateMutation } from "./DatesApi";
-import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useGetWorkoutsQuery } from "../Workouts/WorkoutApi";
 
 function EDModal(props) {
-    const navigate = useNavigate();
-    const [error, setError] = useState("");
+    const { data: woData, isLoading } = useGetWorkoutsQuery();
     const [createMuscleGroup, result] = useCreateWorkoutDateMutation();
-    const [woDate, setWODate] = useState({
-        name: "",
-    });
+    const [workoutId, setWorkoutId] = useState({ id: "" });
 
     const handleChange = (event) => {
-        setWODate({
-            ...woDate,
+        setWorkoutId({
+            ...workoutId,
             [event.target.name]: event.target.value,
         });
     };
 
     async function handleSubmit(e) {
         e.preventDefault();
-        createMuscleGroup({ name: "muscleGroup.name" });
+        createMuscleGroup({
+            workout_id: parseInt(workoutId.id),
+            account_id: 1,
+            wo_date: props.date,
+        });
     }
     if (result.isError) {
         console.log("error");
@@ -49,29 +49,43 @@ function EDModal(props) {
                             <h1
                                 className="modal-title fs-5"
                                 id="staticBackdropLabel">
-                                Create Muscle Group
+                                Add Workout to {props.date}
                             </h1>
-                            <button
-                                type="button"
-                                className="btn-close"
-                                data-bs-dismiss="modal"
-                                aria-label="Close"></button>
                         </div>
                         <div className="modal-body">
                             <form onSubmit={handleSubmit}>
                                 <div className="mb-3">
-                                    <label
-                                        htmlFor="recipient-name"
-                                        className="col-form-label">
-                                        Muscle Group Name:
-                                    </label>
-                                    <input
-                                        // value={muscleGroup.name}
-                                        name="name"
-                                        onChange={handleChange}
-                                        type="text"
-                                        className="form-control"
-                                    />
+                                    {isLoading ? (
+                                        <div className="d-flex justify-content-center">
+                                            <div
+                                                className="spinner-border"
+                                                role="status">
+                                                <span className="visually-hidden">
+                                                    Loading...
+                                                </span>
+                                            </div>
+                                        </div>
+                                    ) : (
+                                        <select
+                                            value={workoutId.id}
+                                            name="id"
+                                            onChange={handleChange}
+                                            className="form-select"
+                                            id="inputGroupSelect01">
+                                            <option value>
+                                                Choose Muscle Group
+                                            </option>
+                                            {woData?.workouts.map((wo) => {
+                                                return (
+                                                    <option
+                                                        value={wo.id}
+                                                        key={wo.id}>
+                                                        {wo.name}
+                                                    </option>
+                                                );
+                                            })}
+                                        </select>
+                                    )}
                                 </div>
                                 <div className="modal-footer">
                                     <button
