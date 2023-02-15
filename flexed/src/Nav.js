@@ -42,6 +42,11 @@ function NavBar() {
                     <button type="button" className="btn btn-dark">
                         Login
                     </button>
+                    <NavLink to="/calendar">
+                        <button type="button" className="btn btn-dark">
+                            My Calendar
+                        </button>
+                    </NavLink>
                 </div>
             </div>
         </nav>

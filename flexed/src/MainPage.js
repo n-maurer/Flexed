@@ -1,11 +1,4 @@
-import MyCalendar from "./Accounts/Calendar";
-
 function MainPage() {
-    return (
-        <>
-            MainPage
-            <MyCalendar />
-        </>
-    );
+    return <>MainPage</>;
 }
 export default MainPage;
