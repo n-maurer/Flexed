@@ -34,8 +34,8 @@ function MyCalendar() {
             </div>
 
             <EDModal date={longDate} />
-            <div>Your Workouts on {shortDate}:</div>
-            <CertainDaysWorkout longDate={longDate} />
+
+            <CertainDaysWorkout shortDate={shortDate} longDate={longDate} />
         </div>
     );
 }

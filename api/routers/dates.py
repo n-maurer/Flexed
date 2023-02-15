@@ -24,14 +24,14 @@ def create_we_relationship(
 def get_all(
     repo: DateWorkoutRepository = Depends(),
 ):
-    return {"date-tables": repo.get_all()}
+    return {"date_tables": repo.get_all()}
 
 @router.get("/workout-date/{date}")
 def get_by_date(
     date: str,
     repo: DateWorkoutRepository = Depends(),
 ):
-    return {"date-tables": repo.get_by_date(date)}
+    return {"date_tables": repo.get_by_date(date)}
 
 
 @router.delete("/workout-date/{wd_id}", response_model=bool)
