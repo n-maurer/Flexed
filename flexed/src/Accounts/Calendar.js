@@ -6,6 +6,9 @@ import "./calendar.css";
 function MyCalendar() {
     const [date, setDate] = useState(new Date());
     let selectedDate = date.toDateString();
+    let splitDate = selectedDate.split(" ");
+    let shortDate = `${splitDate[1]} ${splitDate[2]}`;
+    let longDate = `${splitDate[1]} ${splitDate[2]} ${splitDate[3]}`;
 
     return (
         <div>
@@ -13,8 +16,9 @@ function MyCalendar() {
                 <Calendar onChange={setDate} value={date} />
             </div>
             <button type="button" className="btn btn-secondary">
-                Add Workout to {selectedDate}
+                Add Workout to {shortDate}
             </button>
+            <div>Your Workouts on {shortDate}:</div>
         </div>
     );
 }
