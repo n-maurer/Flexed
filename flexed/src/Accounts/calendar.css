@@ -100,3 +100,8 @@ abbr[title] {
     background: #780000;
     color: white;
 }
+
+.center-calendar {
+    display: flex;
+    justify-content: center;
+}

@@ -8,8 +8,8 @@ function MyCalendar() {
     let selectedDate = date.toDateString();
 
     return (
-        <div className="app">
-            <div className="calendar-container">
+        <div>
+            <div className="calendar-container center-calendar">
                 <Calendar onChange={setDate} value={date} />
             </div>
             <button type="button" className="btn btn-secondary">
