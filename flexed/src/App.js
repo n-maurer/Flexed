@@ -5,7 +5,7 @@ import MGMain from "./Muscle-Groups/MGMain";
 import MainPage from "./MainPage";
 import ExerciseMain from "./Exercises/ExerciseMain";
 import WorkoutMain from "./Workouts/WorkoutMain";
-import CalendarPage from "./Accounts/CalendarPage";
+import CalendarPage from "./Dates/CalendarPage";
 
 function App() {
     return (

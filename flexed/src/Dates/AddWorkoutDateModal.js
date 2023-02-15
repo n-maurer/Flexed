@@ -1,26 +1,26 @@
 import { Navigate } from "react-router-dom";
-import { useCreateMuscleGroupMutation } from "./muscleGroupApi";
+import { useCreateWorkoutDateMutation } from "./DatesApi";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-function MGModal() {
+function EDModal(props) {
     const navigate = useNavigate();
     const [error, setError] = useState("");
-    const [createMuscleGroup, result] = useCreateMuscleGroupMutation();
-    const [muscleGroup, setMuscleGroup] = useState({
+    const [createMuscleGroup, result] = useCreateWorkoutDateMutation();
+    const [woDate, setWODate] = useState({
         name: "",
     });
 
     const handleChange = (event) => {
-        setMuscleGroup({
-            ...muscleGroup,
+        setWODate({
+            ...woDate,
             [event.target.name]: event.target.value,
         });
     };
 
     async function handleSubmit(e) {
         e.preventDefault();
-        createMuscleGroup({ name: muscleGroup.name });
+        createMuscleGroup({ name: "muscleGroup.name" });
     }
     if (result.isError) {
         console.log("error");
@@ -33,7 +33,7 @@ function MGModal() {
                 className="btn btn-dark cards"
                 data-bs-toggle="modal"
                 data-bs-target="#staticBackdrop">
-                Add Muscle Group
+                Add Workout to {props.date}
             </button>
             <div
                 className="modal fade"
@@ -66,7 +66,7 @@ function MGModal() {
                                         Muscle Group Name:
                                     </label>
                                     <input
-                                        value={muscleGroup.name}
+                                        // value={muscleGroup.name}
                                         name="name"
                                         onChange={handleChange}
                                         type="text"
@@ -95,4 +95,4 @@ function MGModal() {
         </>
     );
 }
-export default MGModal;
+export default EDModal;
