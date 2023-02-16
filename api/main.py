@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from routers import muscle_groups, exercises, workouts, w_e_table, dates, ex_wo_dates, accounts
 from fastapi.middleware.cors import CORSMiddleware
+from authenticator import authenticator
 import os
 
 origins = [
@@ -18,6 +19,7 @@ app.include_router(workouts.router, tags=['Workouts'])
 app.include_router(w_e_table.router, tags=['Workout Exercise Relationship Table'])
 app.include_router(dates.router, tags=['Date Workout Relationship Table'])
 app.include_router(ex_wo_dates.router, tags=['Exercise Workout Date Table'])
+app.include_router(authenticator.router, tags=["authenticator"])
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
