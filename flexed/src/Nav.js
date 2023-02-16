@@ -1,6 +1,7 @@
 import "./Nav.css";
 import NavbarDropdown from "./NavDropdown";
 import { NavLink } from "react-router-dom";
+import LoginModal from "./Accounts/LoginModal";
 
 function NavBar() {
     return (
@@ -39,9 +40,7 @@ function NavBar() {
                     <button type="button" className="btn btn-dark">
                         Sign Up
                     </button>
-                    <button type="button" className="btn btn-dark">
-                        Login
-                    </button>
+                    <LoginModal />
                     <NavLink to="/calendar">
                         <button type="button" className="btn btn-dark">
                             My Calendar
