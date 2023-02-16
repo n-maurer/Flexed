@@ -32,7 +32,7 @@ function MyCalendar() {
             <div className="calendar-container center-calendar">
                 <Calendar onChange={setDate} value={date} />
             </div>
-            <EDModal date={shortDate} />
+            <EDModal date={longDate} shortDate={shortDate} />
             <CertainDaysWorkout shortDate={shortDate} longDate={longDate} />
         </div>
     );

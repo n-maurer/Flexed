@@ -33,7 +33,7 @@ function EDModal(props) {
                 className="btn btn-dark cards"
                 data-bs-toggle="modal"
                 data-bs-target="#staticBackdrop">
-                Add Workout to {props.date}
+                Add Workout to {props.shortDate}
             </button>
             <div
                 className="modal fade"
@@ -49,7 +49,7 @@ function EDModal(props) {
                             <h1
                                 className="modal-title fs-5"
                                 id="staticBackdropLabel">
-                                Add Workout to {props.date}
+                                Add Workout to {props.shortDate}
                             </h1>
                         </div>
                         <div className="modal-body">
@@ -73,7 +73,7 @@ function EDModal(props) {
                                             className="form-select"
                                             id="inputGroupSelect01">
                                             <option value>
-                                                Choose Muscle Group
+                                                Choose Workout
                                             </option>
                                             {woData?.workouts.map((wo) => {
                                                 return (
