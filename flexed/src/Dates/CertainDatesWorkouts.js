@@ -4,11 +4,10 @@ import { useEffect } from "react";
 function CertainDaysWorkout(props) {
     const { data, error, isLoading } = useGetWorkoutByDateQuery(props.longDate);
     const [isData, setIsData] = useState(false);
-    console.log(data);
+
     return (
         <div>
-            {data ? <> Your workouts on {props.shortDate}:</> : <></>}
-
+            Your workouts on {props.shortDate}:
             <div className="cards">
                 <div className="row row-cols-1 row-cols-md-1 g-4">
                     {data?.date_tables.map((dt) => {
