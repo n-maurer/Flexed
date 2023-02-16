@@ -65,7 +65,7 @@ class ExerciseRepository:
                     FROM exercises AS e
                     LEFT JOIN muscle_groups AS m
                         ON (e.muscle_group_id = m.id)
-                    ORDER BY id;
+                    ORDER BY name;
                     """
                 )
 
