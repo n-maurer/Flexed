@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useCreateLoginTokenMutation } from "./AccountsApi";
+import { useLoginMutation } from "./AuthApi";
 
 function LoginModal() {
     const [show, setShow] = useState(false);
@@ -7,7 +7,7 @@ function LoginModal() {
         password: "",
         username: "",
     });
-    const [createLoginToken, result] = useCreateLoginTokenMutation();
+    const [createLoginToken, result] = useLoginMutation();
 
     const handleChange = (event) => {
         setAccount({ ...account, [event.target.name]: event.target.value });
@@ -15,12 +15,12 @@ function LoginModal() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        console.log(account.username, account.password);
         let formData = null;
         formData = new FormData();
         formData.append("username", account.username);
         formData.append("password", account.password);
         createLoginToken(formData);
+        console.log("success");
     };
     if (result.isError) {
         console.log("error");

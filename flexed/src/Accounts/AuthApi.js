@@ -19,9 +19,8 @@ export const authApi = createApi({
                 }
                 return {
                     url: "/token",
-
                     method: "post",
-                    body: formData,
+                    body: info,
                     credentials: "include",
                 };
             },
