@@ -2,6 +2,7 @@ import { Navigate } from "react-router-dom";
 import { useCreateWorkoutMutation } from "./WorkoutApi";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useGetTokenQuery } from "../Accounts/AuthApi";
 
 function WorkoutModal() {
     const navigate = useNavigate();
@@ -10,6 +11,11 @@ function WorkoutModal() {
     const [workout, setWorkout] = useState({
         name: "",
     });
+    const {
+        data: tokenData,
+        error: tokenError,
+        isLoading: tokenIsLoading,
+    } = useGetTokenQuery();
 
     const handleChange = (event) => {
         setWorkout({
@@ -20,7 +26,10 @@ function WorkoutModal() {
 
     async function handleSubmit(e) {
         e.preventDefault();
-        createWorkout({ name: workout.name, account_id: 1 });
+        createWorkout({
+            name: workout.name,
+            account_id: tokenData.account["id"],
+        });
     }
     if (result.isError) {
         console.log("error");
