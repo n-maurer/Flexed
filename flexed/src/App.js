@@ -6,12 +6,19 @@ import MainPage from "./MainPage";
 import ExerciseMain from "./Exercises/ExerciseMain";
 import WorkoutMain from "./Workouts/WorkoutMain";
 import CalendarPage from "./Dates/CalendarPage";
+// import { AuthProvider, useToken } from "./UseToken";
+
+// function GetToken() {
+//     useToken();
+//     return null;
+// }
 
 function App() {
     return (
         <div className="App">
             <div>
                 <BrowserRouter>
+                    {/* <GetToken /> */}
                     <NavBar />
                     <Routes>
                         <Route path="/" element={<MainPage />} />

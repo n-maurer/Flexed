@@ -1,0 +1,63 @@
+import { useLogoutMutation } from "./AuthApi";
+
+function LogoutModal() {
+    const [logout, result] = useLogoutMutation();
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        logout();
+    };
+    if (result.isError) {
+        console.log("error");
+    }
+
+    return (
+        <>
+            <button
+                type="button"
+                className="btn btn-dark"
+                data-bs-toggle="modal"
+                data-bs-target="#staticBackdrop">
+                Logout
+            </button>
+            <div
+                className="modal fade"
+                id="staticBackdrop"
+                data-bs-backdrop="static"
+                data-bs-keyboard="false"
+                tabIndex="-1"
+                aria-labelledby="staticBackdropLabel"
+                aria-hidden="true">
+                <div className="modal-dialog">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h1
+                                className="modal-title fs-5"
+                                id="staticBackdropLabel">
+                                Are you sure you want to logout?
+                            </h1>
+                        </div>
+                        <form onSubmit={handleSubmit}>
+                            <div className="modal-body">
+                                <button
+                                    type="button"
+                                    className="btn btn-secondary"
+                                    data-bs-dismiss="modal">
+                                    Close
+                                </button>
+                                <button
+                                    style={{ marginLeft: "5px" }}
+                                    type="submit"
+                                    data-bs-dismiss="modal"
+                                    className="btn btn-primary">
+                                    Logout
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </>
+    );
+}
+export default LogoutModal;

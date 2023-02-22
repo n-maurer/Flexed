@@ -25,17 +25,29 @@ export const authApi = createApi({
                 };
             },
             invalidatesTags: (result) => {
-                return (result && ["Account"]) || [];
+                return (result && ["Token"]) || [];
+            },
+        }),
+        logout: builder.mutation({
+            query: () => {
+                return {
+                    url: "/token",
+                    method: "delete",
+                    credentials: "include",
+                };
+            },
+            invalidatesTags: (result) => {
+                return (result && ["Token"]) || [];
             },
         }),
         getToken: builder.query({
             query: () => ({
-                url: "/token",
-
+                url: "/api/token",
                 credentials: "include",
             }),
             providesTags: ["Token"],
         }),
     }),
 });
-export const { useLoginMutation, useGetTokenQuery } = authApi;
+export const { useLoginMutation, useGetTokenQuery, useLogoutMutation } =
+    authApi;

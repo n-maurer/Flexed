@@ -2,8 +2,13 @@ import "./Nav.css";
 import NavbarDropdown from "./NavDropdown";
 import { NavLink } from "react-router-dom";
 import LoginModal from "./Accounts/LoginModal";
+import { useGetTokenQuery } from "./Accounts/AuthApi";
+import LogoutModal from "./Accounts/LogoutModal";
 
 function NavBar() {
+    const { data, error, isLoading } = useGetTokenQuery();
+    // console.log(data.account["username"]);
+
     return (
         <nav
             className="navbar navbar-expand-md bg-dark"
@@ -22,6 +27,7 @@ function NavBar() {
                         />
                     </NavLink>
                 </div>
+
                 <div className="mascot" style={{ height: "100px" }}>
                     <NavLink to="/">
                         <img
@@ -37,15 +43,23 @@ function NavBar() {
                     className="btn-group-vertical"
                     role="group"
                     aria-label="Vertical button group">
-                    <button type="button" className="btn btn-dark">
-                        Sign Up
-                    </button>
-                    <LoginModal />
-                    <NavLink to="/calendar">
-                        <button type="button" className="btn btn-dark">
-                            My Calendar
-                        </button>
-                    </NavLink>
+                    {data ? (
+                        <>
+                            <NavLink to="/calendar">
+                                <button type="button" className="btn btn-dark">
+                                    My Calendar
+                                </button>
+                            </NavLink>
+                            <LogoutModal />
+                        </>
+                    ) : (
+                        <>
+                            <button type="button" className="btn btn-dark">
+                                Sign Up
+                            </button>
+                            <LoginModal />
+                        </>
+                    )}
                 </div>
             </div>
         </nav>
