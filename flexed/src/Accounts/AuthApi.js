@@ -25,7 +25,7 @@ export const authApi = createApi({
                 };
             },
             invalidatesTags: (result) => {
-                return (result && ["Account"]) || [];
+                return (result && ["Token"]) || [];
             },
         }),
         logout: builder.mutation({
@@ -37,7 +37,7 @@ export const authApi = createApi({
                 };
             },
             invalidatesTags: (result) => {
-                return (result && ["Account"]) || [];
+                return (result && ["Token"]) || [];
             },
         }),
         getToken: builder.query({
