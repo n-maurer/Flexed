@@ -92,7 +92,10 @@ function LoginModal() {
                                         data-bs-dismiss="modal">
                                         Close
                                     </button>
-                                    <button className="btn btn-primary">
+                                    <button
+                                        type="submit"
+                                        data-bs-dismiss="modal"
+                                        className="btn btn-primary">
                                         Login
                                     </button>
                                 </div>
