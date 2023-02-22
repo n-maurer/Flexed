@@ -1,4 +1,5 @@
 import { useLogoutMutation } from "./AuthApi";
+import { NavLink } from "react-router-dom";
 
 function LogoutModal() {
     const [logout, result] = useLogoutMutation();
@@ -6,6 +7,7 @@ function LogoutModal() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         logout();
+        window.location.href = "/";
     };
     if (result.isError) {
         console.log("error");

@@ -7,7 +7,7 @@ import LogoutModal from "./Accounts/LogoutModal";
 
 function NavBar() {
     const { data, error, isLoading } = useGetTokenQuery();
-    // console.log(data.account["username"]);
+    // console.log(data);
 
     return (
         <nav
