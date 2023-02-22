@@ -30,8 +30,7 @@ export const authApi = createApi({
         }),
         getToken: builder.query({
             query: () => ({
-                url: "/token",
-
+                url: "/api/token",
                 credentials: "include",
             }),
             providesTags: ["Token"],

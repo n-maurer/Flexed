@@ -20,7 +20,6 @@ function LoginModal() {
         formData.append("username", account.username);
         formData.append("password", account.password);
         createLoginToken(formData);
-        console.log("success");
     };
     if (result.isError) {
         console.log("error");
