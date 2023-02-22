@@ -3,6 +3,7 @@ import NavbarDropdown from "./NavDropdown";
 import { NavLink } from "react-router-dom";
 import LoginModal from "./Accounts/LoginModal";
 import { useGetTokenQuery } from "./Accounts/AuthApi";
+import LogoutModal from "./Accounts/LogoutModal";
 
 function NavBar() {
     const { data, error, isLoading } = useGetTokenQuery();
@@ -49,9 +50,7 @@ function NavBar() {
                                     My Calendar
                                 </button>
                             </NavLink>
-                            <button type="button" className="btn btn-dark">
-                                Logout
-                            </button>
+                            <LogoutModal />
                         </>
                     ) : (
                         <>
