@@ -33,6 +33,21 @@ def get_by_date(
 ):
     return {"date_tables": repo.get_by_date(date)}
 
+@router.get("/workout-date/users/{account_id}")
+def get_workouts_by_account_id(
+    account_id: int,
+    repo: DateWorkoutRepository = Depends(),
+):
+    return {"date_tables": repo.get_workouts_by_account_id(account_id)}
+
+@router.get("/workout-date/users/{account_id}/{date}")
+def get_workouts_by_account_date(
+    account_id: int,
+    date: str,
+    repo: DateWorkoutRepository = Depends(),
+):
+    return {"date_tables": repo.get_workouts_by_account_date(account_id, date)}
+
 
 @router.delete("/workout-date/{wd_id}", response_model=bool)
 def delete_workout_date(

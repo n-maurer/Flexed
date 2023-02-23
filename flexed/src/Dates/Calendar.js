@@ -4,8 +4,14 @@ import "react-calendar/dist/Calendar.css";
 import "./calendar.css";
 import EDModal from "./AddWorkoutDateModal";
 import CertainDaysWorkout from "./CertainDatesWorkouts";
+import { useGetTokenQuery } from "../Accounts/AuthApi";
 
 function MyCalendar() {
+    const {
+        data: tokenData,
+        error: tokenError,
+        isLoading: tokenIsLoading,
+    } = useGetTokenQuery();
     const [date, setDate] = useState(new Date());
     const months = {
         Jan: "01",
@@ -28,13 +34,27 @@ function MyCalendar() {
     let longDate = `${splitDate[3]}-${months[splitDate[1]]}-${splitDate[2]}`;
 
     return (
-        <div>
-            <div className="calendar-container center-calendar">
-                <Calendar onChange={setDate} value={date} />
-            </div>
-            <EDModal date={longDate} shortDate={shortDate} />
-            <CertainDaysWorkout shortDate={shortDate} longDate={longDate} />
-        </div>
+        <>
+            {tokenData ? (
+                <div>
+                    <div className="calendar-container center-calendar">
+                        <Calendar onChange={setDate} value={date} />
+                    </div>
+                    <EDModal date={longDate} shortDate={shortDate} />
+                    {tokenIsLoading ? (
+                        <></>
+                    ) : (
+                        <CertainDaysWorkout
+                            shortDate={shortDate}
+                            longDate={longDate}
+                            userId={tokenData.account["id"]}
+                        />
+                    )}
+                </div>
+            ) : (
+                <>You need to login to view this page</>
+            )}
+        </>
     );
 }
 export default MyCalendar;

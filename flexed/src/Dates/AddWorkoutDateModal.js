@@ -1,11 +1,13 @@
 import { useCreateWorkoutDateMutation } from "./DatesApi";
 import { useState } from "react";
 import { useGetWorkoutsQuery } from "../Workouts/WorkoutApi";
+import { useGetTokenQuery } from "../Accounts/AuthApi";
 
 function EDModal(props) {
     const { data: woData, isLoading } = useGetWorkoutsQuery();
     const [createMuscleGroup, result] = useCreateWorkoutDateMutation();
     const [workoutId, setWorkoutId] = useState({ id: "" });
+    const { data: tokenData } = useGetTokenQuery();
 
     const handleChange = (event) => {
         setWorkoutId({
@@ -18,7 +20,7 @@ function EDModal(props) {
         e.preventDefault();
         createMuscleGroup({
             workout_id: parseInt(workoutId.id),
-            account_id: 1,
+            account_id: tokenData.account["id"],
             wo_date: props.date,
         });
     }

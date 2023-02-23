@@ -3,13 +3,19 @@ import { useCreateExerciseMutation } from "./ExerciseApi";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useGetMuscleGroupsQuery } from "../Muscle-Groups/muscleGroupApi";
+import { useGetTokenQuery } from "../Accounts/AuthApi";
 
 function ExerciseModal() {
     const { data, error, isLoading } = useGetMuscleGroupsQuery();
+    const {
+        data: tokenData,
+        error: tokenError,
+        isLoading: tokenIsLoading,
+    } = useGetTokenQuery();
     // const [error, setError] = useState("");
     const [createExercise, result] = useCreateExerciseMutation();
     const [exercise, setExercise] = useState({
-        accountId: "",
+        accountId: tokenData.account["id"],
         name: "",
         muscleGroupId: "",
         reps: "",
@@ -48,12 +54,12 @@ function ExerciseModal() {
                 type="button"
                 className="btn btn-dark cards"
                 data-bs-toggle="modal"
-                data-bs-target="#staticBackdrop">
+                data-bs-target="#login">
                 Add Exercise
             </button>
             <div
                 className="modal fade"
-                id="staticBackdrop"
+                id="login"
                 data-bs-backdrop="static"
                 data-bs-keyboard="false"
                 tabIndex="-1"
@@ -160,7 +166,7 @@ function ExerciseModal() {
                                         placeholder="Example: 30 minutes"
                                     />
                                 </div>
-                                <div className="input-group mb-3">
+                                {/* <div className="input-group mb-3">
                                     <span
                                         className="input-group-text"
                                         id="addon-wrapping">
@@ -174,7 +180,7 @@ function ExerciseModal() {
                                         className="form-control"
                                         placeholder="Account ID"
                                     />
-                                </div>
+                                </div> */}
 
                                 <div className="modal-footer">
                                     <button

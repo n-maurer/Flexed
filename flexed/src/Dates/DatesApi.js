@@ -23,10 +23,21 @@ export const workoutDateApi = createApi({
             query: (date) => `workout-date/${date}`,
             providesTags: ["workoutDate"],
         }),
+        getWorkoutDatesByAccountId: builder.query({
+            query: (account_id) => `/workout-date/users/${account_id}`,
+            providesTags: ["workoutDate"],
+        }),
+        getWorkoutDatesByAccountAndDate: builder.query({
+            query: (account_id, date) =>
+                `/workout-date/users/${account_id}/${date}`,
+            providesTags: ["workoutDate"],
+        }),
     }),
 });
 export const {
     useWorkoutDatesQuery,
     useCreateWorkoutDateMutation,
     useGetWorkoutByDateQuery,
+    useGetWorkoutDatesByAccountIdQuery,
+    useGetWorkoutDatesByAccountAndDateQuery,
 } = workoutDateApi;

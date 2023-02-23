@@ -1,12 +1,19 @@
 import { useGetExercisesQuery } from "./ExerciseApi";
 import ExerciseModal from "./CreateExerciseModal";
+import { useGetTokenQuery } from "../Accounts/AuthApi";
 
 function ExerciseMain() {
     const { data, error, isLoading } = useGetExercisesQuery();
+    const {
+        data: tokenData,
+        error: tokenError,
+        isLoading: tokenIsLoading,
+    } = useGetTokenQuery();
 
     return (
         <>
-            <ExerciseModal />
+            {tokenData ? <ExerciseModal /> : <></>}
+
             {isLoading === true ? (
                 <div className="d-flex justify-content-center">
                     <div className="spinner-border" role="status">
