@@ -2,12 +2,23 @@ import { useCreateWorkoutDateMutation } from "./DatesApi";
 import { useState } from "react";
 import { useGetWorkoutsQuery } from "../Workouts/WorkoutApi";
 import { useGetTokenQuery } from "../Accounts/AuthApi";
+import { useGetExerciseByWorkoutQuery } from "../Workouts/WorkoutApi";
 
 function EDModal(props) {
     const { data: woData, isLoading } = useGetWorkoutsQuery();
+
     const [createMuscleGroup, result] = useCreateWorkoutDateMutation();
     const [workoutId, setWorkoutId] = useState({ id: "" });
     const { data: tokenData } = useGetTokenQuery();
+    // let lst = [];
+    // console.log(woData);
+    // if (woData) {
+    //     for (let x in woData["workouts"]) {
+    //         console.log(woData["workouts"][x]["id"]);
+    //         const { data: exercisesByWorkoutData } =
+    //             useGetExerciseByWorkoutQuery();
+    //     }
+    // }
 
     const handleChange = (event) => {
         setWorkoutId({
@@ -26,6 +37,15 @@ function EDModal(props) {
     }
     if (result.isError) {
         console.log("error");
+    }
+    async function handleTest(e) {
+        e.preventDefault();
+        console.log({
+            workout_id: parseInt(workoutId.id),
+            account_id: tokenData.account["id"],
+            wo_date: props.date,
+        });
+        let exerciseList = [];
     }
 
     return (
@@ -101,6 +121,11 @@ function EDModal(props) {
                                         data-bs-dismiss="modal"
                                         className="btn btn-primary">
                                         Create
+                                    </button>
+                                    <button
+                                        onClick={handleTest}
+                                        className="btn btn-primary">
+                                        Test
                                     </button>
                                 </div>
                             </form>
