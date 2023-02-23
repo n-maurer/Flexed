@@ -34,21 +34,27 @@ function MyCalendar() {
     let longDate = `${splitDate[3]}-${months[splitDate[1]]}-${splitDate[2]}`;
 
     return (
-        <div>
-            <div className="calendar-container center-calendar">
-                <Calendar onChange={setDate} value={date} />
-            </div>
-            <EDModal date={longDate} shortDate={shortDate} />
-            {tokenIsLoading ? (
-                <></>
+        <>
+            {tokenData ? (
+                <div>
+                    <div className="calendar-container center-calendar">
+                        <Calendar onChange={setDate} value={date} />
+                    </div>
+                    <EDModal date={longDate} shortDate={shortDate} />
+                    {tokenIsLoading ? (
+                        <></>
+                    ) : (
+                        <CertainDaysWorkout
+                            shortDate={shortDate}
+                            longDate={longDate}
+                            userId={tokenData.account["id"]}
+                        />
+                    )}
+                </div>
             ) : (
-                <CertainDaysWorkout
-                    shortDate={shortDate}
-                    longDate={longDate}
-                    userId={tokenData.account["id"]}
-                />
+                <>You need to login to view this page</>
             )}
-        </div>
+        </>
     );
 }
 export default MyCalendar;
