@@ -6,6 +6,7 @@ import { workoutApi } from "./Workouts/WorkoutApi";
 import { workoutDateApi } from "./Dates/DatesApi";
 import { accountsApi } from "./Accounts/AccountsApi";
 import { authApi } from "./Accounts/AuthApi";
+import { woExRelationship } from "./Current-Workout/ExWoRelationshipApi";
 
 export const store = configureStore({
     reducer: {
@@ -15,6 +16,7 @@ export const store = configureStore({
         [workoutDateApi.reducerPath]: workoutDateApi.reducer,
         [accountsApi.reducerPath]: accountsApi.reducer,
         [authApi.reducerPath]: authApi.reducer,
+        [woExRelationship.reducerPath]: woExRelationship.reducer,
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware()
@@ -23,7 +25,8 @@ export const store = configureStore({
             .concat(workoutApi.middleware)
             .concat(workoutDateApi.middleware)
             .concat(accountsApi.middleware)
-            .concat(authApi.middleware),
+            .concat(authApi.middleware)
+            .concat(woExRelationship.middleware),
 });
 
 setupListeners(store.dispatch);

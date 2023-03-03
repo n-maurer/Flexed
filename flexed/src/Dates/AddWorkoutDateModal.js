@@ -2,23 +2,20 @@ import { useCreateWorkoutDateMutation } from "./DatesApi";
 import { useState } from "react";
 import { useGetWorkoutsQuery } from "../Workouts/WorkoutApi";
 import { useGetTokenQuery } from "../Accounts/AuthApi";
-import { useGetExerciseByWorkoutQuery } from "../Workouts/WorkoutApi";
+// import { useGetExerciseByWorkoutQuery } from "../Workouts/WorkoutApi";
+import { useGetAllWEReltaionshipsQuery } from "../Workouts/WorkoutApi";
+// import { useCreateWoExRelationship } from "../Current-Workout/ExWoRelationshipApi";
 
 function EDModal(props) {
     const { data: woData, isLoading } = useGetWorkoutsQuery();
+    console.log(isLoading);
 
-    const [createMuscleGroup, result] = useCreateWorkoutDateMutation();
+    const [createWorkoutDate, result] = useCreateWorkoutDateMutation();
+    // const [createWoExRelationship, woExResult] = useCreateWoExRelationship();
     const [workoutId, setWorkoutId] = useState({ id: "" });
     const { data: tokenData } = useGetTokenQuery();
-    // let lst = [];
-    // console.log(woData);
-    // if (woData) {
-    //     for (let x in woData["workouts"]) {
-    //         console.log(woData["workouts"][x]["id"]);
-    //         const { data: exercisesByWorkoutData } =
-    //             useGetExerciseByWorkoutQuery();
-    //     }
-    // }
+    // const { data: werData } = useGetAllWEReltaionshipsQuery();
+    // console.log(werData);
 
     const handleChange = (event) => {
         setWorkoutId({
@@ -29,7 +26,7 @@ function EDModal(props) {
 
     async function handleSubmit(e) {
         e.preventDefault();
-        createMuscleGroup({
+        createWorkoutDate({
             workout_id: parseInt(workoutId.id),
             account_id: tokenData.account["id"],
             wo_date: props.date,
@@ -39,13 +36,13 @@ function EDModal(props) {
         console.log("error");
     }
     async function handleTest(e) {
-        e.preventDefault();
-        console.log({
-            workout_id: parseInt(workoutId.id),
-            account_id: tokenData.account["id"],
-            wo_date: props.date,
-        });
-        let exerciseList = [];
+        // e.preventDefault();
+        // console.log({
+        //     workout_id: parseInt(workoutId.id),
+        //     account_id: tokenData.account["id"],
+        //     wo_date: props.date,
+        // });
+        // let exerciseList = [];
     }
 
     return (

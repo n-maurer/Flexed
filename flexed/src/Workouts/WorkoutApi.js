@@ -31,6 +31,10 @@ export const workoutApi = createApi({
             }),
             invalidatesTags: ["WorkoutList"],
         }),
+        getAllWEReltaionships: builder.query({
+            query: () => "/we-table",
+            providesTags: ["WorkoutList"],
+        }),
     }),
 });
 export const {
@@ -38,4 +42,5 @@ export const {
     useCreateWorkoutMutation,
     useGetExerciseByWorkoutQuery,
     useAddExerciseMutation,
+    useGetAllWEReltaionshipsQuery,
 } = workoutApi;
