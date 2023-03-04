@@ -108,14 +108,11 @@ steps = [
             id SERIAL PRIMARY KEY NOT NULL,
             account_id INTEGER REFERENCES accounts("id") ON DELETE CASCADE,
             workout_id INTEGER REFERENCES workouts("id") ON DELETE CASCADE,
-            wo_date_id INTEGER REFERENCES workouts_date("id") ON DELETE CASCADE,
+            wo_date DATE NOT NULL,
             exercise_id INTEGER REFERENCES exercises("id") ON DELETE CASCADE,
             status VARCHAR(5),
             weight_done VARCHAR(100),
-            duration_done VARCHAR(100),
-            reps VARCHAR(100),
-            sets VARCHAR(100),
-            duration VARCHAR(100)
+            duration_done VARCHAR(100)
         );
         """,
 
