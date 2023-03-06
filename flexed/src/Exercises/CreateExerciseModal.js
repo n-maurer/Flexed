@@ -42,9 +42,7 @@ function ExerciseModal() {
         });
     }
 
-    if (result.isSuccess) {
-        console.log("success");
-    } else if (result.isError) {
+    if (result.isError) {
         console.log("error");
     }
 

@@ -37,7 +37,7 @@ function EDModal(props) {
                 createExWoDate({
                     workout_id: parseInt(workoutId.id),
                     wo_date: props.date,
-                    exercise_id: i["workout_id"],
+                    exercise_id: i["exercise_id"],
                     account_id: tokenData.account["id"],
                     status: "no",
                     weight_done: "None",
@@ -53,10 +53,10 @@ function EDModal(props) {
     //     console.log(werData);
     //     for (let i of werData["we-tables"]) {
     //         if (i["workout_id"] === parseInt(workoutId.id)) {
-    //             createExWoDate({
+    //             console.log({
     //                 workout_id: parseInt(workoutId.id),
     //                 wo_date: props.date,
-    //                 exercise_id: i["workout_id"],
+    //                 exercise_id: i["exercise_id"],
     //                 account_id: tokenData.account["id"],
     //                 status: "false",
     //                 weight_done: "None",
