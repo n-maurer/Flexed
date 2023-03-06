@@ -15,6 +15,13 @@ export const exWoDateRelationship = createApi({
             }),
             invalidatesTags: ["exWoDateRelationship"],
         }),
+        getExWoDateByDate: builder.query({
+            query: (date) => `/ex-wo-date/${date}`,
+            providesTags: ["exWoDateRelationship"],
+        }),
     }),
 });
-export const { useCreateExWoDateRelationshipMutation } = exWoDateRelationship;
+export const {
+    useCreateExWoDateRelationshipMutation,
+    useGetExWoDateByDateQuery,
+} = exWoDateRelationship;

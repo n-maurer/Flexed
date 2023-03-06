@@ -6,6 +6,7 @@ import MainPage from "./MainPage";
 import ExerciseMain from "./Exercises/ExerciseMain";
 import WorkoutMain from "./Workouts/WorkoutMain";
 import CalendarPage from "./Dates/CalendarPage";
+import CurrentWorkoutMain from "./Current-Workout/CurrentWorkoutMain";
 // import { AuthProvider, useToken } from "./UseToken";
 
 // function GetToken() {
@@ -26,6 +27,10 @@ function App() {
                         <Route path="/exercises" element={<ExerciseMain />} />
                         <Route path="/workouts" element={<WorkoutMain />} />
                         <Route path="/calendar" element={<CalendarPage />} />
+                        <Route
+                            path="/current-workout/:date"
+                            element={<CurrentWorkoutMain />}
+                        />
                     </Routes>
                 </BrowserRouter>
             </div>

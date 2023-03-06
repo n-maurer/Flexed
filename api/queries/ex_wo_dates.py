@@ -137,23 +137,22 @@ class EWDRepository:
                 return results
 
 
-    def get_exercises_by_workout_id(self, wd_id: int):
+    def get_exercises_by_date(self, date: str):
         with pool.connection() as conn:
             with conn.cursor() as cur:
                 params = [
-                    wd_id
+                    date
                 ]
                 cur.execute(
                     """
-                    SELECT ewd.id AS id, ewd.workout_id AS ewd_id, w.name AS workout_name, ewd.wo_date_id AS wo_date_id, wd.wo_date AS wo_date, ewd.exercise_id AS exercise_id, ewd.account_id, e.name AS exercise_name, ewd.status AS status, ewd.weight_done AS weight_done, ewd.duration_done AS duration_done, ewd.reps AS reps, ewd.sets AS sets, ewd.duration AS duration
+                    SELECT ewd.id AS id, ewd.workout_id AS ewd_id, w.name AS workout_name, ewd.wo_date AS wo_date, ewd.exercise_id AS exercise_id, ewd.account_id, e.name AS exercise_name, ewd.status AS status, ewd.weight_done AS weight_done, ewd.duration_done AS duration_done, e.reps AS reps, e.sets AS sets, e.duration AS duration
                     FROM ex_wo_dates AS ewd
                     RIGHT JOIN workouts AS w
                         ON (ewd.workout_id = w.id)
                     RIGHT JOIN exercises AS e
                         ON (ewd.exercise_id = e.id)
-                    RIGHT JOIN workouts_date AS wd
-                        ON (ewd.wo_date_id = wd.id)
-                    WHERE wo_date_id = %s
+
+                    WHERE wo_date = %s
                     """,
                     params,
                 )
