@@ -19,9 +19,18 @@ export const exWoDateRelationship = createApi({
             query: (date) => `/ex-wo-date/${date}`,
             providesTags: ["exWoDateRelationship"],
         }),
+        editExWoDate: builder.mutation({
+            query: (ewd_id, data) => ({
+                url: `/ex-wo-date/${ewd_id}`,
+                body: data,
+                method: "put",
+            }),
+            invalidatesTags: ["exWoDateRelationship"],
+        }),
     }),
 });
 export const {
     useCreateExWoDateRelationshipMutation,
     useGetExWoDateByDateQuery,
+    useEditExWoDateMutation,
 } = exWoDateRelationship;

@@ -145,7 +145,10 @@ class EWDRepository:
                 ]
                 cur.execute(
                     """
-                    SELECT ewd.id AS id, ewd.workout_id AS ewd_id, w.name AS workout_name, ewd.wo_date AS wo_date, ewd.exercise_id AS exercise_id, ewd.account_id, e.name AS exercise_name, ewd.status AS status, ewd.weight_done AS weight_done, ewd.duration_done AS duration_done, e.reps AS reps, e.sets AS sets, e.duration AS duration
+                    SELECT ewd.id AS id, ewd.workout_id AS ewd_id, w.name AS workout_name, w.id AS wo_id,
+                           ewd.wo_date AS wo_date, ewd.exercise_id AS exercise_id, ewd.account_id,
+                           e.name AS exercise_name, ewd.status AS status, ewd.weight_done AS weight_done,
+                           ewd.duration_done AS duration_done, e.reps AS reps, e.sets AS sets, e.duration AS duration
                     FROM ex_wo_dates AS ewd
                     RIGHT JOIN workouts AS w
                         ON (ewd.workout_id = w.id)

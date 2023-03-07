@@ -1,0 +1,17 @@
+.completed {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 5px;
+    background-color: #DE2F35;
+}
+
+.incomplete {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 5px;
+    background-color: rgb(13, 88, 13);
+}

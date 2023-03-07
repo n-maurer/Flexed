@@ -28,7 +28,7 @@ function App() {
                         <Route path="/workouts" element={<WorkoutMain />} />
                         <Route path="/calendar" element={<CalendarPage />} />
                         <Route
-                            path="/current-workout/:date"
+                            path="/current-workout/:date/:wd"
                             element={<CurrentWorkoutMain />}
                         />
                     </Routes>
