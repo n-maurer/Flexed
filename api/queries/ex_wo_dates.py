@@ -10,15 +10,12 @@ class Error(BaseModel):
 #Exercise Workout Date (ExWoDate)
 class ExWoDateIn(BaseModel):
     workout_id: int
-    wo_date_id: int
+    wo_date: date
     exercise_id: int
     account_id: int
     status: str
     weight_done: Optional[str]
     duration_done: Optional[str]
-    reps: Optional[str]
-    sets: Optional[str]
-    duration: Optional[str]
 
 
 class ExWoDateOut(ExWoDateIn):
@@ -36,32 +33,26 @@ class EWDRepository:
             with conn.cursor() as cur:
                 params = [
                     ewd.workout_id,
-                    ewd.wo_date_id,
+                    ewd.wo_date,
                     ewd.exercise_id,
                     ewd.account_id,
                     ewd.status,
                     ewd.weight_done,
                     ewd.duration_done,
-                    ewd.reps,
-                    ewd.sets,
-                    ewd.duration
                 ]
                 cur.execute(
                     """
                     INSERT INTO ex_wo_dates(
                             workout_id,
-                            wo_date_id,
+                            wo_date,
                             exercise_id,
                             account_id,
                             status,
                             weight_done,
-                            duration_done,
-                            reps,
-                            sets,
-                            duration
+                            duration_done
                         )
-                    VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
-                    RETURNING id, workout_id, wo_date_id, exercise_id, account_id, status, weight_done, duration_done, reps, sets, duration
+                    VALUES (%s, %s, %s, %s, %s, %s, %s)
+                    RETURNING id, workout_id, wo_date, exercise_id, account_id, status, weight_done, duration_done
                     """,
                     params,
                 )
@@ -80,32 +71,26 @@ class EWDRepository:
             with conn.cursor() as cur:
                 params = [
                     ewd.workout_id,
-                    ewd.wo_date_id,
+                    ewd.wo_date,
                     ewd.exercise_id,
                     ewd.account_id,
                     ewd.status,
                     ewd.weight_done,
                     ewd.duration_done,
-                    ewd.reps,
-                    ewd.sets,
-                    ewd.duration,
                     ewd_id
                 ]
                 cur.execute(
                     """
                     UPDATE ex_wo_dates
                     SET workout_id = %s,
-                            wo_date_id = %s,
+                            wo_date = %s,
                             exercise_id = %s,
                             account_id = %s,
                             status = %s,
                             weight_done = %s,
-                            duration_done = %s,
-                            reps = %s,
-                            sets = %s,
-                            duration = %s
+                            duration_done = %s
                     WHERE id = %s
-                    RETURNING id, workout_id, wo_date_id, exercise_id, account_id, status, weight_done, duration_done, reps, sets, duration
+                    RETURNING id, workout_id, wo_date, exercise_id, account_id, status, weight_done, duration_done
                     """,
                     params,
                 )
@@ -125,14 +110,17 @@ class EWDRepository:
             with conn.cursor() as cur:
                 cur.execute(
                     """
-                    SELECT ewd.id AS id, ewd.workout_id AS ewd_id, w.name AS workout_name, ewd.wo_date_id AS wo_date_id, wd.wo_date AS wo_date, ewd.exercise_id AS exercise_id, ewd.account_id, e.name AS exercise_name, ewd.status AS status, ewd.weight_done AS weight_done, ewd.duration_done AS duration_done, ewd.reps AS reps, ewd.sets AS sets, ewd.duration AS duration
+                    SELECT ewd.id AS id, ewd.workout_id AS ewd_id, w.name AS workout_name,
+                                         ewd.wo_date AS wo_date,
+                                         ewd.exercise_id AS exercise_id, ewd.account_id,
+                                         e.name AS exercise_name, ewd.status AS status,
+                                         ewd.weight_done AS weight_done, e.reps AS reps,
+                                         e.sets AS sets, e.duration AS duration
                     FROM ex_wo_dates AS ewd
                     RIGHT JOIN workouts AS w
                         ON (ewd.workout_id = w.id)
                     RIGHT JOIN exercises AS e
                         ON (ewd.exercise_id = e.id)
-                    RIGHT JOIN workouts_date AS wd
-                        ON (ewd.wo_date_id = wd.id)
                     """
                 )
 
@@ -146,23 +134,25 @@ class EWDRepository:
                 return results
 
 
-    def get_exercises_by_workout_id(self, wd_id: int):
+    def get_exercises_by_date(self, date: str):
         with pool.connection() as conn:
             with conn.cursor() as cur:
                 params = [
-                    wd_id
+                    date
                 ]
                 cur.execute(
                     """
-                    SELECT ewd.id AS id, ewd.workout_id AS ewd_id, w.name AS workout_name, ewd.wo_date_id AS wo_date_id, wd.wo_date AS wo_date, ewd.exercise_id AS exercise_id, ewd.account_id, e.name AS exercise_name, ewd.status AS status, ewd.weight_done AS weight_done, ewd.duration_done AS duration_done, ewd.reps AS reps, ewd.sets AS sets, ewd.duration AS duration
+                    SELECT ewd.id AS id, ewd.workout_id AS ewd_id, w.name AS workout_name, w.id AS wo_id,
+                           ewd.wo_date AS wo_date, ewd.exercise_id AS exercise_id, ewd.account_id,
+                           e.name AS exercise_name, ewd.status AS status, ewd.weight_done AS weight_done,
+                           ewd.duration_done AS duration_done, e.reps AS reps, e.sets AS sets, e.duration AS duration
                     FROM ex_wo_dates AS ewd
                     RIGHT JOIN workouts AS w
                         ON (ewd.workout_id = w.id)
                     RIGHT JOIN exercises AS e
                         ON (ewd.exercise_id = e.id)
-                    RIGHT JOIN workouts_date AS wd
-                        ON (ewd.wo_date_id = wd.id)
-                    WHERE wo_date_id = %s
+
+                    WHERE wo_date = %s
                     """,
                     params,
                 )

@@ -2,12 +2,21 @@ import { useCreateWorkoutDateMutation } from "./DatesApi";
 import { useState } from "react";
 import { useGetWorkoutsQuery } from "../Workouts/WorkoutApi";
 import { useGetTokenQuery } from "../Accounts/AuthApi";
+// import { useGetExerciseByWorkoutQuery } from "../Workouts/WorkoutApi";
+import { useGetAllWEReltaionshipsQuery } from "../Workouts/WorkoutApi";
+// import { useCreateWoExRelationship } from "../Current-Workout/ExWoRelationshipApi";
+import { useCreateExWoDateRelationshipMutation } from "../Current-Workout/ExDateWoAPI";
 
 function EDModal(props) {
     const { data: woData, isLoading } = useGetWorkoutsQuery();
-    const [createMuscleGroup, result] = useCreateWorkoutDateMutation();
+
+    const [createWorkoutDate, result] = useCreateWorkoutDateMutation();
+    const [createExWoDate, ewdResult] = useCreateExWoDateRelationshipMutation();
+    // const [createWoExRelationship, woExResult] = useCreateWoExRelationship();
     const [workoutId, setWorkoutId] = useState({ id: "" });
     const { data: tokenData } = useGetTokenQuery();
+    const { data: werData } = useGetAllWEReltaionshipsQuery();
+    // console.log(werData);
 
     const handleChange = (event) => {
         setWorkoutId({
@@ -18,15 +27,45 @@ function EDModal(props) {
 
     async function handleSubmit(e) {
         e.preventDefault();
-        createMuscleGroup({
+        createWorkoutDate({
             workout_id: parseInt(workoutId.id),
             account_id: tokenData.account["id"],
             wo_date: props.date,
         });
+        for (let i of werData["we-tables"]) {
+            if (i["workout_id"] === parseInt(workoutId.id)) {
+                createExWoDate({
+                    workout_id: parseInt(workoutId.id),
+                    wo_date: props.date,
+                    exercise_id: i["exercise_id"],
+                    account_id: tokenData.account["id"],
+                    status: "no",
+                    weight_done: "None",
+                    duration_done: "None",
+                });
+            }
+        }
     }
     if (result.isError) {
         console.log("error");
     }
+    // async function handleTest(e) {
+    //     console.log(werData);
+    //     for (let i of werData["we-tables"]) {
+    //         if (i["workout_id"] === parseInt(workoutId.id)) {
+    //             console.log({
+    //                 workout_id: parseInt(workoutId.id),
+    //                 wo_date: props.date,
+    //                 exercise_id: i["exercise_id"],
+    //                 account_id: tokenData.account["id"],
+    //                 status: "false",
+    //                 weight_done: "None",
+    //                 duration_done: "None",
+    //             });
+    //         }
+    //     }
+    //     console.log(workoutId.id);
+    // }
 
     return (
         <>
@@ -102,6 +141,12 @@ function EDModal(props) {
                                         className="btn btn-primary">
                                         Create
                                     </button>
+                                    {/* <button
+                                        type="button"
+                                        onClick={handleTest}
+                                        className="btn btn-primary">
+                                        Test
+                                    </button> */}
                                 </div>
                             </form>
                         </div>

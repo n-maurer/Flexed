@@ -36,13 +36,13 @@ def delete_we_relationship(
     return repo.delete(ewd_id)
 
 
-@router.get("/ex-wo-date/{wd_id}")
-def get_exercises_by_workout_date_id(
-    wd_id: int,
+@router.get("/ex-wo-date/{date}")
+def get_exercises_by_date(
+    date: str,
     repo: EWDRepository = Depends(),
 ):
     # workout_name = repo.get_workout_name_by_id(wd_id)
-    return {"table": repo.get_exercises_by_workout_id(wd_id)}
+    return {"table": repo.get_exercises_by_date(date)}
 
 
 @router.put("/ex-wo-date/{ewd_id}", response_model=Union[bool, ExWoDateOut])

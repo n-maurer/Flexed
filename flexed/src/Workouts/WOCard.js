@@ -12,7 +12,7 @@ function WOCard(props) {
         isLoading: tokenIsLoading,
     } = useGetTokenQuery();
     let propsId = toString(props.wo.id);
-    console.log(props.wo.account_id);
+
     return (
         <div className="col" key={props.wo.id}>
             <div className="card h-100">

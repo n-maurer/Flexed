@@ -1,4 +1,6 @@
 import { useGetWorkoutDatesByAccountIdQuery } from "./DatesApi";
+import { Link } from "react-router-dom";
+
 function CertainDaysWorkout(props) {
     const { data } = useGetWorkoutDatesByAccountIdQuery(props.userId);
 
@@ -15,11 +17,14 @@ function CertainDaysWorkout(props) {
                                     <div className="card h-100">
                                         <div className="card-body">
                                             <h5>{dt.name}</h5>
-                                            <button
-                                                type="button"
-                                                className="btn btn-secondary btn-sm">
-                                                Begin Workout
-                                            </button>
+                                            <Link
+                                                to={`/current-workout/${props.longDate}/${dt.workout_id}`}>
+                                                <button
+                                                    type="button"
+                                                    className="btn btn-secondary btn-sm">
+                                                    Begin Workout
+                                                </button>
+                                            </Link>
                                         </div>
                                     </div>
                                 </div>
