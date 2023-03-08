@@ -77,9 +77,6 @@ class EWDRepository:
                     ewd.status,
                     ewd.weight_done,
                     ewd.duration_done,
-                    ewd.reps,
-                    ewd.sets,
-                    ewd.duration,
                     ewd_id
                 ]
                 cur.execute(

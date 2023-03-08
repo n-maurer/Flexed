@@ -13,7 +13,7 @@ function CurrentExerciseModal({ exercise }) {
         weight_done: exercise.weight_done,
         duration_done: exercise.duration_done,
     });
-    // console.log(currentExercise);
+    // console.log(exercise);
 
     const handleChange = (event) => {
         setExercise({
@@ -24,15 +24,36 @@ function CurrentExerciseModal({ exercise }) {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        editExWoDate(exercise.id, {
-            workout_id: currentExercise.wo_id,
+        console.log({
+            workout_id: currentExercise.workout_id,
             wo_date: currentExercise.wo_date,
             exercise_id: currentExercise.exercise_id,
             account_id: currentExercise.account_id,
-            status: currentExercise.status,
+            status: "yes",
             weight_done: currentExercise.weight_done,
             duration_done: currentExercise.duration_done,
         });
+        editExWoDate([
+            exercise.id,
+            [
+                currentExercise.workout_id,
+                currentExercise.wo_date,
+                currentExercise.exercise_id,
+                currentExercise.account_id,
+                "yes",
+                currentExercise.weight_done,
+                currentExercise.duration_done,
+            ],
+            // {
+            //     workout_id: currentExercise.workout_id,
+            //     wo_date: currentExercise.wo_date,
+            //     exercise_id: currentExercise.exercise_id,
+            //     account_id: currentExercise.account_id,
+            //     status: currentExercise.status,
+            //     weight_done: currentExercise.weight_done,
+            //     duration_done: currentExercise.duration_done,
+            // },
+        ]);
     };
 
     const targetHash = `#f${exercise.id}`;

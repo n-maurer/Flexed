@@ -40,6 +40,10 @@ function CurrentWorkoutMain() {
                                                     <h6>
                                                         Sets: {exercise.sets}
                                                     </h6>
+                                                    <h6>
+                                                        Weight Done:{" "}
+                                                        {exercise.weight_done}
+                                                    </h6>
                                                     {exercise.status ===
                                                     "no" ? (
                                                         <div className="completed"></div>
