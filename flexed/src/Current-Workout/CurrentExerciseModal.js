@@ -24,15 +24,6 @@ function CurrentExerciseModal({ exercise }) {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log({
-            workout_id: currentExercise.workout_id,
-            wo_date: currentExercise.wo_date,
-            exercise_id: currentExercise.exercise_id,
-            account_id: currentExercise.account_id,
-            status: "yes",
-            weight_done: currentExercise.weight_done,
-            duration_done: currentExercise.duration_done,
-        });
         editExWoDate([
             exercise.id,
             [
@@ -44,15 +35,6 @@ function CurrentExerciseModal({ exercise }) {
                 currentExercise.weight_done,
                 currentExercise.duration_done,
             ],
-            // {
-            //     workout_id: currentExercise.workout_id,
-            //     wo_date: currentExercise.wo_date,
-            //     exercise_id: currentExercise.exercise_id,
-            //     account_id: currentExercise.account_id,
-            //     status: currentExercise.status,
-            //     weight_done: currentExercise.weight_done,
-            //     duration_done: currentExercise.duration_done,
-            // },
         ]);
     };
 
