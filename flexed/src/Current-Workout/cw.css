@@ -15,3 +15,9 @@
     margin-right: 5px;
     background-color: rgb(13, 88, 13);
 }
+
+.select-faster-scroll {
+    overflow-y: scroll;
+    scroll-behavior: auto;
+    /* or scroll-behavior: auto; */
+}

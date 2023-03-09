@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useEditExWoDateMutation } from "./ExDateWoAPI";
+import "./cw.css";
 
 function EditCurrentExerciseModal({ exercise }) {
     const [editExWoDate, result] = useEditExWoDateMutation();
@@ -32,7 +33,7 @@ function EditCurrentExerciseModal({ exercise }) {
                 currentExercise.exercise_id,
                 currentExercise.account_id,
                 "yes",
-                currentExercise.weight_done,
+                `${currentExercise.weight_done} lbs`,
                 currentExercise.duration_done,
             ],
         ]);
@@ -68,7 +69,7 @@ function EditCurrentExerciseModal({ exercise }) {
                         </div>
                         <div className="modal-body">
                             <form onSubmit={handleSubmit}>
-                                <div className="input-group mb-3">
+                                {/* <div className="input-group mb-3">
                                     <span
                                         className="input-group-text"
                                         id="addon-wrapping">
@@ -81,6 +82,24 @@ function EditCurrentExerciseModal({ exercise }) {
                                         type="text"
                                         className="form-control"
                                         placeholder={exercise.weight_done}
+                                    />
+                                </div> */}
+                                <div className="input-group mb-3">
+                                    <span
+                                        className="input-group-text"
+                                        id="addon-wrapping">
+                                        Weight Done
+                                    </span>
+                                    <input
+                                        className="form-control"
+                                        aria-label="Weight Done"
+                                        type="number"
+                                        step="0.5"
+                                        min="0.5"
+                                        max="1000"
+                                        name="weight_done"
+                                        onChange={handleChange}
+                                        value={currentExercise.weight_done}
                                     />
                                 </div>
                                 <div className="modal-footer">
