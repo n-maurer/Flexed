@@ -165,6 +165,31 @@ class EWDRepository:
 
                 return results
 
+    def get_last_weight_by_ex_id(self, ex_id: int):
+        with pool.connection() as conn:
+            with conn.cursor() as cur:
+                params = [
+                    ex_id
+                ]
+                cur.execute(
+                    """
+                    SELECT weight_done, duration_done, MAX(wo_date) AS most_recent_date
+                    FROM ex_wo_dates
+                    WHERE exercise_id = %s
+                    GROUP BY weight_done, duration_done, wo_date
+                    ORDER BY wo_date DESC
+                    """,
+                    params,
+                )
+                results = []
+                for row in cur.fetchall():
+                    record = {}
+                    for i, column in enumerate(cur.description):
+                        record[column.name] = row[i]
+                    results.append(record)
+
+                return results
+
 
     def delete(self, ewd_id: int) -> bool:
         try:

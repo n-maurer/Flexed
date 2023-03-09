@@ -28,34 +28,10 @@ function CurrentWorkoutMain() {
                                 )
                                 .map((exercise) => {
                                     return (
-                                        <div className="col" key={exercise.id}>
-                                            <div className="card h-100">
-                                                <div className="card-body">
-                                                    <h5>
-                                                        {exercise.exercise_name}
-                                                    </h5>
-                                                    <h6>
-                                                        Reps: {exercise.reps}
-                                                    </h6>
-                                                    <h6>
-                                                        Sets: {exercise.sets}
-                                                    </h6>
-                                                    <h6>
-                                                        Weight Done:{" "}
-                                                        {exercise.weight_done}
-                                                    </h6>
-                                                    {exercise.status ===
-                                                    "no" ? (
-                                                        <div className="completed"></div>
-                                                    ) : (
-                                                        <div className="incomplete"></div>
-                                                    )}
-                                                </div>
-                                                <CurrentExerciseModal
-                                                    exercise={exercise}
-                                                />
-                                            </div>
-                                        </div>
+                                        <CurrentExerciseModal
+                                            key={exercise.id}
+                                            exercise={exercise}
+                                        />
                                     );
                                 })}
                         </div>

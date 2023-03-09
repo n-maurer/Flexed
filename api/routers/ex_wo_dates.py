@@ -52,3 +52,10 @@ def update_ewd(
     repo: EWDRepository = Depends(),
 ) -> Union[bool, ExWoDateOut]:
     return repo.update(ewd_id, ewd)
+
+@router.get("/ex-wo-date/{ex_id}/recent")
+def get_last_weight_by_ex_id(
+    ex_id: int,
+    repo: EWDRepository = Depends()
+):
+    return repo.get_last_weight_by_ex_id(ex_id)
