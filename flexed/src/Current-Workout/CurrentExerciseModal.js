@@ -1,108 +1,51 @@
-import { useState } from "react";
-import { useEditExWoDateMutation } from "./ExDateWoAPI";
+import EditCurrentExerciseModal from "./EditCurrentExerciseModal";
+import { useGetLastWeightQuery } from "./ExDateWoAPI";
+import "./cw.css";
 
 function CurrentExerciseModal({ exercise }) {
-    const [editExWoDate, result] = useEditExWoDateMutation();
+    const { data, isLoading } = useGetLastWeightQuery(exercise.exercise_id);
 
-    const [currentExercise, setExercise] = useState({
-        workout_id: exercise.wo_id,
-        wo_date: exercise.wo_date,
-        exercise_id: exercise.exercise_id,
-        account_id: exercise.account_id,
-        status: exercise.status,
-        weight_done: exercise.weight_done,
-        duration_done: exercise.duration_done,
-    });
-    // console.log(exercise);
-
-    const handleChange = (event) => {
-        setExercise({
-            ...currentExercise,
-            [event.target.name]: event.target.value,
-        });
-    };
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-        editExWoDate([
-            exercise.id,
-            [
-                currentExercise.workout_id,
-                currentExercise.wo_date,
-                currentExercise.exercise_id,
-                currentExercise.account_id,
-                "yes",
-                currentExercise.weight_done,
-                currentExercise.duration_done,
-            ],
-        ]);
-    };
-
-    const targetHash = `#f${exercise.id}`;
-    const target = `f${exercise.id}`;
     return (
-        <>
-            <button
-                type="button"
-                className="btn btn-dark cards"
-                data-bs-toggle="modal"
-                data-bs-target={targetHash}>
-                Complete
-            </button>
-            <div
-                className="modal fade"
-                id={target}
-                data-bs-backdrop="static"
-                data-bs-keyboard="false"
-                tabIndex="-1"
-                aria-labelledby="staticBackdropLabel"
-                aria-hidden="true">
-                <div className="modal-dialog">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            {/* <h1
-                                className="modal-title fs-5"
-                                id="staticBackdropLabel">
-                                {props.exercise.exercise_id}
-                            </h1> */}
-                        </div>
-                        <div className="modal-body">
-                            <form onSubmit={handleSubmit}>
-                                <div className="input-group mb-3">
-                                    <span
-                                        className="input-group-text"
-                                        id="addon-wrapping">
-                                        Weight Done
+        <div className="col" key={exercise.id}>
+            <div className="card h-100">
+                <div className="card-body">
+                    <h5>{exercise.exercise_name}</h5>
+                    <h6>Reps: {exercise.reps}</h6>
+                    <h6>Sets: {exercise.sets}</h6>
+                    <h6>Weight Done: {exercise.weight_done}</h6>
+                    {isLoading ? (
+                        <>
+                            <div className="d-flex justify-content-center">
+                                <div className="spinner-border" role="status">
+                                    <span className="visually-hidden">
+                                        Loading...
                                     </span>
-                                    <input
-                                        value={currentExercise.weight_done}
-                                        name="weight_done"
-                                        onChange={handleChange}
-                                        type="text"
-                                        className="form-control"
-                                        placeholder={exercise.weight_done}
-                                    />
                                 </div>
-                                <div className="modal-footer">
-                                    <button
-                                        type="button"
-                                        className="btn btn-secondary"
-                                        data-bs-dismiss="modal">
-                                        Close
-                                    </button>
-                                    <button
-                                        type="submit"
-                                        data-bs-dismiss="modal"
-                                        className="btn btn-dark">
-                                        Complete
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
+                            </div>
+                        </>
+                    ) : (
+                        <>
+                            {data[0].weight_done !== "None" ? (
+                                <>
+                                    <h6>
+                                        Last Weight Done: {data[0].weight_done}
+                                    </h6>
+                                </>
+                            ) : (
+                                <></>
+                            )}
+                        </>
+                    )}
+                    {exercise.status === "no" ? (
+                        <div className="completed"></div>
+                    ) : (
+                        <div className="incomplete"></div>
+                    )}
                 </div>
+
+                <EditCurrentExerciseModal exercise={exercise} />
             </div>
-        </>
+        </div>
     );
 }
 export default CurrentExerciseModal;
