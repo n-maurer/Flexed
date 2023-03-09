@@ -178,7 +178,6 @@ class EWDRepository:
                     WHERE exercise_id = %s
                     GROUP BY weight_done, duration_done, wo_date
                     ORDER BY wo_date DESC
-                    LIMIT 1
                     """,
                     params,
                 )

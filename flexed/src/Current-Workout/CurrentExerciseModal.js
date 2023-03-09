@@ -25,11 +25,18 @@ function CurrentExerciseModal({ exercise }) {
                         </>
                     ) : (
                         <>
-                            {data[0].weight_done !== "None" ? (
+                            {data.length > 1 ? (
                                 <>
-                                    <h6>
-                                        Last Weight Done: {data[0].weight_done}
-                                    </h6>
+                                    {data[1].weight_done !== "None" ? (
+                                        <>
+                                            <h6>
+                                                Last Weight Done:{" "}
+                                                {data[1].weight_done}
+                                            </h6>
+                                        </>
+                                    ) : (
+                                        <></>
+                                    )}
                                 </>
                             ) : (
                                 <></>
