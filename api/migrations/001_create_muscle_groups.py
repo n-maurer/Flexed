@@ -22,9 +22,9 @@ steps = [
         """
         CREATE TABLE accounts (
             id SERIAL PRIMARY KEY NOT NULL,
-            email VARCHAR(200) NOT NULL,
-            hashed_password VARCHAR(200) NOT NULL,
-            username VARCHAR(250) NOT NULL
+            email VARCHAR(200) NOT NULL UNIQUE,
+            hashed_password VARCHAR(200) NOT NULL UNIQUE,
+            username VARCHAR(250) NOT NULL UNIQUE
         );
         """,
         """
@@ -36,7 +36,7 @@ steps = [
         """
         CREATE TABLE muscle_groups (
             id SERIAL PRIMARY KEY NOT NULL,
-            name VARCHAR(1000) NOT NULL
+            name VARCHAR(1000) NOT NULL UNIQUE
         );
         """,
         ##Drop the table
@@ -120,4 +120,5 @@ steps = [
         DROP TABLE workouts_date
         """
     ],
+
 ]
