@@ -3,24 +3,25 @@ import "./main.css";
 function MainPage() {
     return (
         <>
-            <header class="masthead">
-                <div class="container px-4 px-lg-5 h-100">
-                    <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
-                        <div class="col-lg-8 align-self-end">
-                            <h1 class="text-white font-weight-bold">
-                                Your Favorite Place for Free Bootstrap Themes
+            <header className="masthead">
+                <div className="container px-4 px-lg-5 h-100">
+                    <div className="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
+                        <div className="col-lg-8 align-self-end">
+                            <h1 className="text-white font-weight-bold">
+                                Your Favorite Place to Create and Track Workouts
                             </h1>
-                            <hr class="divider" />
+                            <hr className="divider" />
                         </div>
-                        <div class="col-lg-8 align-self-baseline">
-                            <p class="text-white-75 mb-5">
-                                Start Bootstrap can help you build better
-                                websites using the Bootstrap framework! Just
-                                download a theme and start customizing, no
-                                strings attached!
+                        <div className="col-lg-8 align-self-baseline">
+                            <p className="text-white-75 mb-5">
+                                Flexed empowers you to stay accountable and
+                                achieve your fitness goals by tracking your
+                                workouts. Take the first step towards success by
+                                signing up and creating your initial workout
+                                today.
                             </p>
                             <a
-                                class="btn find-more btn-primary btn-xl"
+                                className="btn find-more btn-primary btn-xl"
                                 href="#about">
                                 Find Out More
                             </a>
@@ -29,89 +30,87 @@ function MainPage() {
                 </div>
             </header>
 
-            <section class="page-section bg-primary" id="about">
-                <div class="container px-4 px-lg-5">
-                    <div class="row gx-4 gx-lg-5 justify-content-center">
-                        <div class="col-lg-8 text-center">
-                            <h2 class="text-white mt-0">
+            <section className="page-section bg-primary" id="about">
+                <div className="container px-4 px-lg-5">
+                    <div className="row gx-4 gx-lg-5 justify-content-center">
+                        <div className="col-lg-8 text-center">
+                            <h2 className="text-white mt-0">
                                 We've got what you need!
                             </h2>
-                            <hr class="divider divider-light" />
-                            <p class="text-white-75 mb-4">
-                                Start Bootstrap has everything you need to get
-                                your new website up and running in no time!
-                                Choose one of our open source, free to download,
-                                and easy to use themes! No strings attached!
+                            <hr className="divider divider-light" />
+                            <p className="text-white-75 mb-4">
+                                Flexed lets you discover a multitude of diverse
+                                workouts curated by a community of fitness
+                                enthusiasts, just like you.
                             </p>
-                            <a class="btn btn-light btn-xl" href="#services">
-                                Get Started!
+                            <a
+                                className="btn btn-light btn-xl"
+                                href="#services">
+                                Browse Workouts
                             </a>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section class="page-section services" id="services">
-                <div class="container px-4 px-lg-5">
-                    <h2 class="text-center mt-0">At Your Service</h2>
-                    <hr class="divider" />
-                    <div class="row gx-4 gx-lg-5">
-                        <div class="col-lg-3 col-md-6 text-center">
-                            <div class="mt-5">
-                                <div class="mb-2">
-                                    <i class="bi-gem fs-1 text-primary"></i>
+            <section className="page-section services" id="services">
+                <div className="container px-4 px-lg-5">
+                    <h2 className="text-center mt-0">Flexed Routine</h2>
+                    <hr className="divider" />
+                    <div className="row gx-4 gx-lg-5">
+                        <div className="col-lg-3 col-md-6 text-center">
+                            <div className="mt-5">
+                                <div className="mb-2">
+                                    <i className="bi-gem fs-1 text-primary"></i>
                                 </div>
-                                <h3 class="h4 mb-2">Sturdy Themes</h3>
-                                <p class="text-muted mb-0">
-                                    Our themes are updated regularly to keep
-                                    them bug free!
+                                <h3 className="h4 mb-2">Create</h3>
+                                <p className="text-muted mb-0">
+                                    Create customizable exercises and workouts
                                 </p>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-6 text-center">
-                            <div class="mt-5">
-                                <div class="mb-2">
-                                    <i class="bi-laptop fs-1 text-primary"></i>
+                        <div className="col-lg-3 col-md-6 text-center">
+                            <div className="mt-5">
+                                <div className="mb-2">
+                                    <i className="bi-laptop fs-1 text-primary"></i>
                                 </div>
-                                <h3 class="h4 mb-2">Up to Date</h3>
-                                <p class="text-muted mb-0">
-                                    All dependencies are kept current to keep
-                                    things fresh.
+                                <h3 className="h4 mb-2">Add</h3>
+                                <p className="text-muted mb-0">
+                                    Add exercises to workouts and workouts to
+                                    your calendar
                                 </p>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-6 text-center">
-                            <div class="mt-5">
-                                <div class="mb-2">
-                                    <i class="bi-globe fs-1 text-primary"></i>
+                        <div className="col-lg-3 col-md-6 text-center">
+                            <div className="mt-5">
+                                <div className="mb-2">
+                                    <i className="bi-globe fs-1 text-primary"></i>
                                 </div>
-                                <h3 class="h4 mb-2">Ready to Publish</h3>
-                                <p class="text-muted mb-0">
-                                    You can use this design as is, or you can
-                                    make changes!
+                                <h3 className="h4 mb-2">Track</h3>
+                                <p className="text-muted mb-0">
+                                    Track your daily workouts and see your
+                                    progress
                                 </p>
                             </div>
                         </div>
-                        <div class="col-lg-3 col-md-6 text-center">
-                            <div class="mt-5">
-                                <div class="mb-2">
-                                    <i class="bi-heart fs-1 text-primary"></i>
+                        <div className="col-lg-3 col-md-6 text-center">
+                            <div className="mt-5">
+                                <div className="mb-2">
+                                    <i className="bi-heart fs-1 text-primary"></i>
                                 </div>
-                                <h3 class="h4 mb-2">Made with Love</h3>
-                                <p class="text-muted mb-0">
-                                    Is it really open source if it's not made
-                                    with love?
+                                <h3 className="h4 mb-2">Repeat</h3>
+                                <p className="text-muted mb-0">
+                                    Keep the routine up so you reach your
+                                    fitness goals!
                                 </p>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-            <footer class="bg-light py-5">
-                <div class="container px-4 px-lg-5">
-                    <div class="small text-center text-muted">
-                        Copyright &copy; 2022 - Company Name
-                    </div>
+            <footer className="bg-light py-5">
+                <div className="container px-4 px-lg-5">
+                    <div className="small text-center text-muted">Flexed</div>
                 </div>
             </footer>
         </>
