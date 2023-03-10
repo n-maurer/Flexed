@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import LoginModal from "./Accounts/LoginModal";
 import { useGetTokenQuery } from "./Accounts/AuthApi";
 import LogoutModal from "./Accounts/LogoutModal";
+import SignupModal from "./Accounts/SignupModal";
 
 function NavBar() {
     const { data, error, isLoading } = useGetTokenQuery();
@@ -54,9 +55,7 @@ function NavBar() {
                         </>
                     ) : (
                         <>
-                            <button type="button" className="btn btn-dark">
-                                Sign Up
-                            </button>
+                            <SignupModal />
                             <LoginModal />
                         </>
                     )}

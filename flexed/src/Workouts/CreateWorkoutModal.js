@@ -41,12 +41,12 @@ function WorkoutModal() {
                 type="button"
                 className="btn btn-dark cards"
                 data-bs-toggle="modal"
-                data-bs-target="#staticBackdrop">
+                data-bs-target="#createWo">
                 Add Workout
             </button>
             <div
                 className="modal fade"
-                id="staticBackdrop"
+                id="createWo"
                 data-bs-backdrop="static"
                 data-bs-keyboard="false"
                 tabIndex="-1"

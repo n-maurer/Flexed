@@ -73,12 +73,12 @@ function EDModal(props) {
                 type="button"
                 className="btn btn-dark cards"
                 data-bs-toggle="modal"
-                data-bs-target="#staticBackdrop">
+                data-bs-target="#addWoDate">
                 Add Workout to {props.shortDate}
             </button>
             <div
                 className="modal fade"
-                id="staticBackdrop"
+                id="addWoDate"
                 data-bs-backdrop="static"
                 data-bs-keyboard="false"
                 tabIndex="-1"
