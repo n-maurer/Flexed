@@ -1,12 +1,14 @@
 import React, { useState } from "react";
-import { useLoginMutation } from "./AuthApi";
+import { useSignupMutation } from "./AuthApi";
 
-function LoginModal() {
+function SignupModal() {
     const [account, setAccount] = useState({
+        email: "",
         password: "",
         username: "",
+        confirm_password: "",
     });
-    const [createLoginToken, result] = useLoginMutation();
+    const [createAccount, result] = useSignupMutation();
 
     const handleChange = (event) => {
         setAccount({ ...account, [event.target.name]: event.target.value });
@@ -14,11 +16,11 @@ function LoginModal() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        let formData = null;
-        formData = new FormData();
-        formData.append("username", account.username);
-        formData.append("password", account.password);
-        createLoginToken(formData);
+        createAccount({
+            email: account.email,
+            username: account.username,
+            password: account.password,
+        });
     };
     if (result.isError) {
         console.log("error");
@@ -30,12 +32,12 @@ function LoginModal() {
                 type="button"
                 className="btn btn-dark"
                 data-bs-toggle="modal"
-                data-bs-target="#login">
-                Login
+                data-bs-target="#signup">
+                Signup
             </button>
             <div
                 className="modal fade"
-                id="login"
+                id="signup"
                 data-bs-backdrop="static"
                 data-bs-keyboard="false"
                 tabIndex="-1"
@@ -47,11 +49,27 @@ function LoginModal() {
                             <h1
                                 className="modal-title fs-5"
                                 id="staticBackdropLabel">
-                                Login
+                                Signup
                             </h1>
                         </div>
                         <div className="modal-body">
                             <form onSubmit={handleSubmit}>
+                                <div className="form-floating mb-3">
+                                    <input
+                                        onChange={handleChange}
+                                        className="form-control"
+                                        type="text"
+                                        name="email"
+                                        id="email"
+                                        placeholder="Email"
+                                        value={account.email}
+                                    />
+                                    <label
+                                        className="form-check-label"
+                                        htmlFor="email">
+                                        Email
+                                    </label>
+                                </div>
                                 <div className="form-floating mb-3">
                                     <input
                                         onChange={handleChange}
@@ -84,6 +102,22 @@ function LoginModal() {
                                         Password
                                     </label>
                                 </div>
+                                <div className="form-floating mb-3">
+                                    <input
+                                        onChange={handleChange}
+                                        className="form-control"
+                                        type="password"
+                                        name="confirm_password"
+                                        id="confirm_password"
+                                        placeholder="confirm_password"
+                                        value={account.confirm_password}
+                                    />
+                                    <label
+                                        className="form-check-label"
+                                        htmlFor="password">
+                                        Confirm Password
+                                    </label>
+                                </div>
                                 <div className="modal-footer">
                                     <button
                                         type="button"
@@ -95,7 +129,7 @@ function LoginModal() {
                                         type="submit"
                                         data-bs-dismiss="modal"
                                         className="btn btn-primary">
-                                        Login
+                                        Signup
                                     </button>
                                 </div>
                             </form>
@@ -107,4 +141,4 @@ function LoginModal() {
     );
 }
 
-export default LoginModal;
+export default SignupModal;

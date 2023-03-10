@@ -28,6 +28,17 @@ export const authApi = createApi({
                 return (result && ["Token"]) || [];
             },
         }),
+        signup: builder.mutation({
+            query: (info) => {
+                return {
+                    url: "/api/accounts",
+                    method: "post",
+                    body: info,
+                    credentials: "include",
+                };
+            },
+            providesTags: ["Token"],
+        }),
         logout: builder.mutation({
             query: () => {
                 return {
@@ -49,5 +60,9 @@ export const authApi = createApi({
         }),
     }),
 });
-export const { useLoginMutation, useGetTokenQuery, useLogoutMutation } =
-    authApi;
+export const {
+    useLoginMutation,
+    useGetTokenQuery,
+    useLogoutMutation,
+    useSignupMutation,
+} = authApi;
