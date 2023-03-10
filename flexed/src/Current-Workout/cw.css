@@ -21,3 +21,7 @@
     scroll-behavior: auto;
     /* or scroll-behavior: auto; */
 }
+
+.cw {
+    background-color: #F6F3F0;
+}

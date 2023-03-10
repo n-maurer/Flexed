@@ -8,7 +8,7 @@ function CurrentWorkoutMain() {
     const { data, isLoading } = useGetExWoDateByDateQuery(params.date);
 
     return (
-        <div>
+        <div className="cw">
             {isLoading ? (
                 <div className="d-flex justify-content-center">
                     <div className="spinner-border" role="status">
