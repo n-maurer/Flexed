@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useSignupMutation } from "./AuthApi";
+import "./accounts.css";
 
 function SignupModal() {
     const [account, setAccount] = useState({
@@ -16,11 +17,15 @@ function SignupModal() {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        createAccount({
-            email: account.email,
-            username: account.username,
-            password: account.password,
-        });
+        if (account.confirm_password === account.password) {
+            createAccount({
+                email: account.email,
+                username: account.username,
+                password: account.password,
+            });
+        } else {
+            console.log("Passwords do not match");
+        }
     };
     if (result.isError) {
         console.log("error");
@@ -76,7 +81,7 @@ function SignupModal() {
                                         className="form-control"
                                         type="text"
                                         name="username"
-                                        id="username"
+                                        id="signupUsername"
                                         placeholder="Username"
                                         value={account.username}
                                     />
@@ -92,7 +97,7 @@ function SignupModal() {
                                         className="form-control"
                                         type="password"
                                         name="password"
-                                        id="password"
+                                        id="signupPassword"
                                         placeholder="password"
                                         value={account.password}
                                     />
@@ -118,6 +123,16 @@ function SignupModal() {
                                         Confirm Password
                                     </label>
                                 </div>
+                                {account.password ===
+                                account.confirm_password ? (
+                                    <></>
+                                ) : (
+                                    <>
+                                        <div className="noMatch">
+                                            Passwords do not match
+                                        </div>
+                                    </>
+                                )}
                                 <div className="modal-footer">
                                     <button
                                         type="button"
@@ -125,12 +140,19 @@ function SignupModal() {
                                         data-bs-dismiss="modal">
                                         Close
                                     </button>
-                                    <button
-                                        type="submit"
-                                        data-bs-dismiss="modal"
-                                        className="btn btn-primary">
-                                        Signup
-                                    </button>
+                                    {account.password ===
+                                    account.confirm_password ? (
+                                        <>
+                                            <button
+                                                type="submit"
+                                                data-bs-dismiss="modal"
+                                                className="btn btn-primary">
+                                                Signup
+                                            </button>
+                                        </>
+                                    ) : (
+                                        <></>
+                                    )}
                                 </div>
                             </form>
                         </div>

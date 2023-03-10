@@ -1,13 +1,14 @@
 import { useLogoutMutation } from "./AuthApi";
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function LogoutModal() {
     const [logout, result] = useLogoutMutation();
+    const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         logout();
-        window.location.href = "/";
+        navigate("/");
     };
     if (result.isError) {
         console.log("error");
