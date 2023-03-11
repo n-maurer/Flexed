@@ -78,6 +78,30 @@ class ExerciseRepository:
 
                 return results
 
+    def filter_exercises(self, mg_id : int) -> ExerciseOutAll:
+         with pool.connection() as conn:
+            with conn.cursor() as cur:
+                cur.execute(
+                    """
+                    SELECT e.id, e.account_id, e.name, m.id AS muscle_group_id, m.name AS muscle_group, e.reps, e.sets, e.duration
+                    FROM exercises AS e
+                    LEFT JOIN muscle_groups AS m
+                        ON (e.muscle_group_id = m.id)
+                    WHERE m.id = %s
+                    ORDER BY name;
+                    """,
+                    [mg_id]
+                )
+
+                results = []
+                for row in cur.fetchall():
+                    record = {}
+                    for i, column in enumerate(cur.description):
+                        record[column.name] = row[i]
+                    results.append(record)
+
+                return results
+
 
     def delete(self, exercise_id: int) -> bool:
         try:

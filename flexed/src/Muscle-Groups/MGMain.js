@@ -27,7 +27,7 @@ function MGMain() {
                                             </h5>
                                             <p className="card-text"></p>
                                             <a
-                                                href="#"
+                                                href={`/exercises/${mg.id}`}
                                                 className="btn btn-primary">
                                                 View {mg.name} Exercises
                                             </a>

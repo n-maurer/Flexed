@@ -19,6 +19,14 @@ export const exerciseApi = createApi({
             }),
             invalidatesTags: ["ExerciseList"],
         }),
+        filterExercises: builder.query({
+            query: (mg_id) => `/exercises/${mg_id}`,
+            providesTags: ["ExerciseList"],
+        }),
     }),
 });
-export const { useGetExercisesQuery, useCreateExerciseMutation } = exerciseApi;
+export const {
+    useGetExercisesQuery,
+    useCreateExerciseMutation,
+    useFilterExercisesQuery,
+} = exerciseApi;

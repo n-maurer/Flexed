@@ -35,3 +35,11 @@ def update_muscle_group(
     repo: ExerciseRepository = Depends(),
 ) -> Union[bool, ExerciseOut]:
     return repo.update(exercise_id, exercise)
+
+
+@router.get("/exercises/{mg_id}", response_model=ExerciseOutAll)
+def filter_exercises(
+    mg_id: int,
+    repo: ExerciseRepository = Depends()
+):
+    return {"exercises": repo.filter_exercises(mg_id)}

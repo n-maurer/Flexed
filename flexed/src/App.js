@@ -7,6 +7,7 @@ import ExerciseMain from "./Exercises/ExerciseMain";
 import WorkoutMain from "./Workouts/WorkoutMain";
 import CalendarPage from "./Dates/CalendarPage";
 import CurrentWorkoutMain from "./Current-Workout/CurrentWorkoutMain";
+import FilteredExercises from "./Exercises/FilteredExercises";
 // import { AuthProvider, useToken } from "./UseToken";
 
 // function GetToken() {
@@ -30,6 +31,10 @@ function App() {
                         <Route
                             path="/current-workout/:date/:wd"
                             element={<CurrentWorkoutMain />}
+                        />
+                        <Route
+                            path="/exercises/:id"
+                            element={<FilteredExercises />}
                         />
                     </Routes>
                 </BrowserRouter>
