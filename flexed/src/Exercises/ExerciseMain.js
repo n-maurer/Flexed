@@ -1,18 +1,13 @@
 import { useGetExercisesQuery } from "./ExerciseApi";
 import ExerciseModal from "./CreateExerciseModal";
 import { useGetTokenQuery } from "../Accounts/AuthApi";
-import { Link } from "react-router-dom";
 import Loading from "../Loading";
 import FilterDropdown from "./FilterDropdown";
 import "./exercises.css";
 
 function ExerciseMain() {
-    const { data, error, isLoading } = useGetExercisesQuery();
-    const {
-        data: tokenData,
-        error: tokenError,
-        isLoading: tokenIsLoading,
-    } = useGetTokenQuery();
+    const { data, isLoading } = useGetExercisesQuery();
+    const { data: tokenData } = useGetTokenQuery();
 
     return (
         <>
