@@ -30,8 +30,8 @@ function MGModal() {
     return (
         <>
             <button
+                className="circular-button"
                 type="button"
-                className="btn btn-dark cards"
                 data-bs-toggle="modal"
                 data-bs-target="#addMg">
                 Add Muscle Group

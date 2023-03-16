@@ -71,7 +71,7 @@ function EDModal(props) {
         <>
             <button
                 type="button"
-                className="btn btn-dark cards"
+                className="circular-button"
                 data-bs-toggle="modal"
                 data-bs-target="#addWoDate">
                 Add Workout to {props.shortDate}

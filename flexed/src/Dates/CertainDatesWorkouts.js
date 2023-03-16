@@ -21,7 +21,7 @@ function CertainDaysWorkout(props) {
                                                 to={`/current-workout/${props.longDate}/${dt.workout_id}`}>
                                                 <button
                                                     type="button"
-                                                    className="btn btn-secondary btn-sm">
+                                                    className="circular-button-small">
                                                     Begin Workout
                                                 </button>
                                             </Link>

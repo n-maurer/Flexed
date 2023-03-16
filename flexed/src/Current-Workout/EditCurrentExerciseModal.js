@@ -45,7 +45,7 @@ function EditCurrentExerciseModal({ exercise }) {
         <>
             <button
                 type="button"
-                className="btn btn-dark cards"
+                className="circular-button-small"
                 data-bs-toggle="modal"
                 data-bs-target={targetHash}>
                 Complete

@@ -1,6 +1,7 @@
 import { useGetMuscleGroupsQuery } from "../Muscle-Groups/muscleGroupApi";
 import Loading from "../Loading";
 import { Link } from "react-router-dom";
+import "./exercises.css";
 
 function FilterDropdown() {
     const { data: mgData, isLoading: mgLoading } = useGetMuscleGroupsQuery();
@@ -8,7 +9,7 @@ function FilterDropdown() {
     return (
         <div className="dropdown">
             <button
-                className="btn btn-secondary dropdown-toggle exercise-dropdown"
+                className="circular-button dropdown-toggle filter-dropdown"
                 type="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false">

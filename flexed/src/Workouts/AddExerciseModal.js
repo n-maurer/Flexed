@@ -62,7 +62,7 @@ function AddExerciseModal(props) {
         <>
             <button
                 type="button"
-                className="btn btn-dark cards"
+                className="circular-button-small"
                 data-bs-toggle="modal"
                 data-bs-target={hashTarget}>
                 Add Exercises
