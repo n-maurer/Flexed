@@ -21,6 +21,7 @@ function MGModal() {
     async function handleSubmit(e) {
         e.preventDefault();
         createMuscleGroup({ name: muscleGroup.name });
+        setMuscleGroup({ name: "" });
     }
     if (result.isError) {
         console.log("error");
