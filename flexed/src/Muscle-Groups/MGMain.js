@@ -1,6 +1,7 @@
 import "./MG.css";
 import { useGetMuscleGroupsQuery } from "./muscleGroupApi";
 import MGModal from "./CreateMGModal";
+import { Link } from "react-router-dom";
 
 function MGMain() {
     const { data, error, isLoading } = useGetMuscleGroupsQuery();
@@ -26,11 +27,11 @@ function MGMain() {
                                                 {mg.name}
                                             </h5>
                                             <p className="card-text"></p>
-                                            <a
-                                                href={`/exercises/${mg.id}`}
-                                                className="btn btn-primary">
-                                                View {mg.name} Exercises
-                                            </a>
+                                            <Link to={`/exercises/${mg.id}`}>
+                                                <button className="circular-button-small">
+                                                    View {mg.name} Exercises
+                                                </button>
+                                            </Link>
                                         </div>
                                     </div>
                                 </div>
