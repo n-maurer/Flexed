@@ -1,0 +1,25 @@
+.exercise-ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.exercise-li {
+    text-align: left;
+}
+
+.author {
+    margin-top: 1rem;
+    color: grey;
+}
+
+
+.author {
+    margin-top: auto;
+    color: grey;
+}
+
+.ex-modal {
+    margin-top: auto;
+    align-self: center;
+}

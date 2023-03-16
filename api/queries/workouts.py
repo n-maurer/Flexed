@@ -55,8 +55,10 @@ class WorkoutsRepository:
             with conn.cursor() as cur:
                 cur.execute(
                     """
-                    SELECT id, name, account_id
-                    FROM workouts
+                    SELECT w.id, w.name, w.account_id, a.username
+                    FROM workouts AS w
+                    LEFT JOIN accounts AS a
+                        ON (account_id = a.id)
                     ORDER BY id
                     """
                 )
