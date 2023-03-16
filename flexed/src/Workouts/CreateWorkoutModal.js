@@ -30,6 +30,9 @@ function WorkoutModal() {
             name: workout.name,
             account_id: tokenData.account["id"],
         });
+        setWorkout({
+            name: "",
+        });
     }
     if (result.isError) {
         console.log("error");
