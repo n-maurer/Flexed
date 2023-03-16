@@ -64,8 +64,12 @@ function MainPage() {
                         <div className="col-lg-3 col-md-6 text-center">
                             <div className="mt-5">
                                 <div className="mb-2">
-                                    <i className="bi-gem fs-1 text-primary"></i>
+                                    <img
+                                        src={require("./images/create.png")}
+                                        alt="Create Icon"
+                                    />
                                 </div>
+
                                 <h3 className="h4 mb-2">Create</h3>
                                 <p className="text-muted mb-0">
                                     Create customizable exercises and workouts
@@ -75,7 +79,10 @@ function MainPage() {
                         <div className="col-lg-3 col-md-6 text-center">
                             <div className="mt-5">
                                 <div className="mb-2">
-                                    <i className="bi-laptop fs-1 text-primary"></i>
+                                    <img
+                                        src={require("./images/add.png")}
+                                        alt="Add Icon"
+                                    />
                                 </div>
                                 <h3 className="h4 mb-2">Add</h3>
                                 <p className="text-muted mb-0">
@@ -87,7 +94,10 @@ function MainPage() {
                         <div className="col-lg-3 col-md-6 text-center">
                             <div className="mt-5">
                                 <div className="mb-2">
-                                    <i className="bi-globe fs-1 text-primary"></i>
+                                    <img
+                                        src={require("./images/track2.png")}
+                                        alt="Track Icon"
+                                    />
                                 </div>
                                 <h3 className="h4 mb-2">Track</h3>
                                 <p className="text-muted mb-0">
@@ -99,7 +109,10 @@ function MainPage() {
                         <div className="col-lg-3 col-md-6 text-center">
                             <div className="mt-5">
                                 <div className="mb-2">
-                                    <i className="bi-heart fs-1 text-primary"></i>
+                                    <img
+                                        src={require("./images/repeat.png")}
+                                        alt="Repeat Icon"
+                                    />
                                 </div>
                                 <h3 className="h4 mb-2">Repeat</h3>
                                 <p className="text-muted mb-0">
