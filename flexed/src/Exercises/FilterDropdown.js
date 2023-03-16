@@ -39,12 +39,6 @@ function FilterDropdown() {
                         })}
                     </>
                 )}
-
-                <li>
-                    <a className="dropdown-item" href="/workouts">
-                        Workouts
-                    </a>
-                </li>
             </ul>
         </div>
     );
