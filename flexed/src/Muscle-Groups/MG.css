@@ -1,3 +1,13 @@
 .cards {
     margin: 20px;
 }
+
+.view-ex {
+    background-color: #780000;
+    margin-left: 1em;
+}
+
+.view-ex:hover {
+    background-color: #8c0101;
+    margin-left: 1em;
+}

@@ -28,7 +28,7 @@ function MGMain() {
                                             </h5>
                                             <p className="card-text"></p>
                                             <Link to={`/exercises/${mg.id}`}>
-                                                <button className="circular-button-small">
+                                                <button className="circular-button-small view-ex">
                                                     View {mg.name} Exercises
                                                 </button>
                                             </Link>
