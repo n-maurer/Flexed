@@ -40,6 +40,14 @@ function ExerciseModal() {
             sets: exercise.sets,
             duration: exercise.duration,
         });
+        setExercise({
+            accountId: tokenData.account["id"],
+            name: "",
+            muscleGroupId: "",
+            reps: "",
+            sets: "",
+            duration: "",
+        });
     }
 
     if (result.isError) {
