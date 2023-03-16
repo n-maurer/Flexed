@@ -8,11 +8,11 @@ function FilterDropdown() {
     return (
         <div className="dropdown">
             <button
-                className="btn btn-secondary dropdown-toggle"
+                className="btn btn-secondary dropdown-toggle exercise-dropdown"
                 type="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false">
-                Filter{" "}
+                Filter
             </button>
             <ul className="dropdown-menu">
                 <li>
