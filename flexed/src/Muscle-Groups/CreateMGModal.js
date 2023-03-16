@@ -77,14 +77,14 @@ function MGModal() {
                                 <div className="modal-footer">
                                     <button
                                         type="button"
-                                        className="btn btn-secondary"
+                                        className="form-button-close"
                                         data-bs-dismiss="modal">
                                         Close
                                     </button>
                                     <button
                                         type="submit"
                                         data-bs-dismiss="modal"
-                                        className="btn btn-primary">
+                                        className="form-button-action">
                                         Create
                                     </button>
                                 </div>

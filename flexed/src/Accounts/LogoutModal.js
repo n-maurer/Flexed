@@ -44,7 +44,7 @@ function LogoutModal() {
                             <div className="modal-body">
                                 <button
                                     type="button"
-                                    className="btn btn-secondary"
+                                    className="form-button-close"
                                     data-bs-dismiss="modal">
                                     Close
                                 </button>
@@ -52,7 +52,7 @@ function LogoutModal() {
                                     style={{ marginLeft: "5px" }}
                                     type="submit"
                                     data-bs-dismiss="modal"
-                                    className="btn btn-primary">
+                                    className="form-button-action">
                                     Logout
                                 </button>
                             </div>
