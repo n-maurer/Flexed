@@ -1,4 +1,5 @@
 import "./main.css";
+import { Link } from "react-router-dom";
 
 function MainPage() {
     return (
@@ -20,11 +21,11 @@ function MainPage() {
                                 signing up and creating your initial workout
                                 today.
                             </p>
-                            <a
+                            {/* <a
                                 className="btn find-more btn-primary btn-xl"
                                 href="#about">
                                 Find Out More
-                            </a>
+                            </a> */}
                         </div>
                     </div>
                 </div>
@@ -43,11 +44,13 @@ function MainPage() {
                                 workouts curated by a community of fitness
                                 enthusiasts, just like you.
                             </p>
-                            <a
-                                className="btn btn-light btn-xl"
-                                href="#services">
-                                Browse Workouts
-                            </a>
+                            <Link to="/workouts">
+                                <p
+                                    className="btn btn-light btn-xl"
+                                    href="/workouts">
+                                    Browse Workouts
+                                </p>
+                            </Link>
                         </div>
                     </div>
                 </div>

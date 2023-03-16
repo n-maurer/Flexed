@@ -1,13 +1,20 @@
-import { useGetExercisesQuery } from "./ExerciseApi";
+import { useFilterExercisesQuery } from "./ExerciseApi";
 import ExerciseModal from "./CreateExerciseModal";
 import { useGetTokenQuery } from "../Accounts/AuthApi";
+import { useParams } from "react-router-dom";
 import Loading from "../Loading";
 import FilterDropdown from "./FilterDropdown";
-import "./exercises.css";
 
-function ExerciseMain() {
-    const { data, isLoading } = useGetExercisesQuery();
-    const { data: tokenData } = useGetTokenQuery();
+function FilteredExercises() {
+    const params = useParams();
+    const { data, error, isLoading } = useFilterExercisesQuery(params.id);
+    const {
+        data: tokenData,
+        error: tokenError,
+        isLoading: tokenIsLoading,
+    } = useGetTokenQuery();
+
+    console.log(data);
 
     return (
         <>
@@ -20,7 +27,8 @@ function ExerciseMain() {
                 <Loading />
             ) : (
                 <div>
-                    <h2>All Exercises</h2>
+                    <h2>{data.exercises[0]?.muscle_group}</h2>
+
                     <div className="cards">
                         <div className="row row-cols-1 row-cols-md-3 g-4">
                             {data?.exercises.map((exercise) => {
@@ -72,4 +80,4 @@ function ExerciseMain() {
     );
 }
 
-export default ExerciseMain;
+export default FilteredExercises;
