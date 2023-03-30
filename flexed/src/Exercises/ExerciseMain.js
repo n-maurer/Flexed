@@ -60,6 +60,11 @@ function ExerciseMain() {
                                                     {exercise.muscle_group}
                                                 </p>
                                             </div>
+                                            <button
+                                                className="delete-button"
+                                                type="button">
+                                                delete
+                                            </button>
                                         </div>
                                     </div>
                                 );
