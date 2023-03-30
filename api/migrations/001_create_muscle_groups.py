@@ -39,7 +39,7 @@ steps = [
             name VARCHAR(1000) NOT NULL UNIQUE
         );
         """,
-        ##Drop the table
+        #Drop the table
         """
         DROP TABLE muscle_groups
         """
@@ -120,5 +120,6 @@ steps = [
         DROP TABLE workouts_date
         """
     ],
+
 
 ]
