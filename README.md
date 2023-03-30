@@ -13,9 +13,16 @@ Link: https://www.docker.com/products/docker-desktop/
 2. CD into the new project directory
     - ex: cd flexed
 3. Run `docker volume create flexed`
-4. Run `docker compose build`
-5. Run `docker compose up`
-6. Go to http://localhost:3000/
+4. Run `docker volume create pg-admin-data`
+5. Run `docker compose build`
+6. Run `docker compose up`
+7. Go to http://localhost:3000/
+
+## PG-Admin Login
+
+-   http://localhost:8082
+-   username: noahmaurer12@gmail.com
+-   password: flexed
 
 ## Technologies Used
 
