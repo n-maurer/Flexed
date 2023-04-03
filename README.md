@@ -18,7 +18,7 @@ Link: https://www.docker.com/products/docker-desktop/
 6. Run `docker compose up`
 7. Go to http://localhost:3000/
 
-tes
+test
 
 ## PG-Admin Login
 
