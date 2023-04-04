@@ -60,11 +60,14 @@ function ExerciseMain() {
                                                     {exercise.muscle_group}
                                                 </p>
                                             </div>
-                                            <button
-                                                className="delete-button"
-                                                type="button">
-                                                delete
-                                            </button>
+                                            {exercise.account_id ===
+                                                tokenData?.account["id"] && (
+                                                <button
+                                                    className="delete-button"
+                                                    type="button">
+                                                    X
+                                                </button>
+                                            )}
                                         </div>
                                     </div>
                                 );

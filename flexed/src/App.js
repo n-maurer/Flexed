@@ -1,5 +1,5 @@
-import "./app.css";
-import NavBar from "./Nav";
+import "./App.css";
+import NavBar from "./nav";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import MGMain from "./Muscle-Groups/MGMain";
 import MainPage from "./MainPage";
