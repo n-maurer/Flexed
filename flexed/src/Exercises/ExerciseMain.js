@@ -4,6 +4,7 @@ import { useGetTokenQuery } from "../Accounts/AuthApi";
 import Loading from "../Loading";
 import FilterDropdown from "./FilterDropdown";
 import "./exercises.css";
+import DeleteExerciseModal from "./DeleteExerciseModal";
 
 function ExerciseMain() {
     const { data, isLoading } = useGetExercisesQuery();
@@ -62,11 +63,9 @@ function ExerciseMain() {
                                             </div>
                                             {exercise.account_id ===
                                                 tokenData?.account["id"] && (
-                                                <button
-                                                    className="delete-button"
-                                                    type="button">
-                                                    X
-                                                </button>
+                                                <DeleteExerciseModal
+                                                    exercise_id={exercise.id}
+                                                />
                                             )}
                                         </div>
                                     </div>

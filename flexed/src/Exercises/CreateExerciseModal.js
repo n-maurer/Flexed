@@ -172,21 +172,6 @@ function ExerciseModal() {
                                         placeholder="Example: 30 minutes"
                                     />
                                 </div>
-                                {/* <div className="input-group mb-3">
-                                    <span
-                                        className="input-group-text"
-                                        id="addon-wrapping">
-                                        Account ID
-                                    </span>
-                                    <input
-                                        value={exercise.accountId}
-                                        name="accountId"
-                                        onChange={handleChange}
-                                        type="text"
-                                        className="form-control"
-                                        placeholder="Account ID"
-                                    />
-                                </div> */}
 
                                 <div className="modal-footer">
                                     <button
