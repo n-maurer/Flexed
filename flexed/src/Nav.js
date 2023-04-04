@@ -1,4 +1,4 @@
-import "./nav.css";
+import "./Nav.css";
 import NavbarDropdown from "./NavDropdown";
 import { NavLink } from "react-router-dom";
 import LoginModal from "./Accounts/LoginModal";

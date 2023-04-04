@@ -106,3 +106,14 @@
 .form-button-action:hover {
   background-color: #8c0101;
 }
+
+.delete-button {
+  background-color: #8c0101;
+  border-radius: 10px;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  position: absolute;
+  right: 5px;
+  bottom: 5px
+}

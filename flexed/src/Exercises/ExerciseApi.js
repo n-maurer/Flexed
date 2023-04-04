@@ -23,10 +23,18 @@ export const exerciseApi = createApi({
             query: (mg_id) => `/exercises/${mg_id}`,
             providesTags: ["ExerciseList"],
         }),
+        deleteExercise: builder.mutation({
+            query: (ex_id) => ({
+                url: `/exercises/${ex_id}`,
+                method: "delete",
+            }),
+            invalidatesTags: ["ExerciseList"],
+        }),
     }),
 });
 export const {
     useGetExercisesQuery,
     useCreateExerciseMutation,
     useFilterExercisesQuery,
+    useDeleteExerciseMutation,
 } = exerciseApi;
