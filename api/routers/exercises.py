@@ -1,7 +1,8 @@
 from fastapi import APIRouter, Depends, Response
 from typing import List, Optional, Union
 from queries.exercises import ExerciseRepository, ExerciseIn, ExerciseOut, ExerciseOutAll
-
+import json
+import requests
 router = APIRouter()
 
 @router.post("/exercises", response_model=ExerciseIn)
@@ -43,3 +44,17 @@ def filter_exercises(
     repo: ExerciseRepository = Depends()
 ):
     return {"exercises": repo.filter_exercises(mg_id)}
+
+@router.get("/exercises/{muscle_group}/ideas")
+def get_exercise_ideas(
+    muscle_group: str
+):
+    api_key = "U580yuXNnRc4SItKznKaiA==9xN4msRCLUz1jvzb"
+    api_url = 'https://api.api-ninjas.com/v1/exercises?muscle={}'.format(muscle)
+    response = requests.get(api_url, headers={'X-Api-Key': api_key})
+    if response.status_code == requests.codes.ok:
+        data = json.loads(response.text)
+        for x in data:
+            return [x["name"] for x in data]
+    else:
+        print("Error:", response.status_code, response.text)
