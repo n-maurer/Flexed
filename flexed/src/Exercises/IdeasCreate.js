@@ -1,8 +1,5 @@
 import { Navigate } from "react-router-dom";
-import {
-    useCreateExerciseMutation,
-    useGetExerciseIdeasQuery,
-} from "./ExerciseApi";
+import { useCreateExerciseMutation } from "./ExerciseApi";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useGetMuscleGroupsQuery } from "../Muscle-Groups/muscleGroupApi";
@@ -16,6 +13,8 @@ function IdeasModal() {
         isLoading: tokenIsLoading,
     } = useGetTokenQuery();
 
+    const [ideaButtonStatus, setIdeaButtonStatus] = useState(false);
+    const [mgSelected, setMgSelected] = useState(false);
     const [ideas, setIdeas] = useState([]);
 
     const [createExercise, result] = useCreateExerciseMutation();
@@ -44,6 +43,7 @@ function IdeasModal() {
             .then((data) => {
                 setIdeas(data);
             });
+        setIdeaButtonStatus(true);
     }
 
     const handleChange = (event) => {
@@ -51,6 +51,15 @@ function IdeasModal() {
             ...exercise,
             [event.target.name]: event.target.value,
         });
+    };
+
+    const handleMuscleGroupChange = (event) => {
+        const { value } = event.target;
+        setExercise((prevState) => ({
+            ...prevState,
+            muscleGroupId: value,
+        }));
+        setMgSelected(true);
     };
 
     async function handleSubmit(e) {
@@ -71,12 +80,15 @@ function IdeasModal() {
             sets: "",
             duration: "",
         });
+        setMgSelected(false);
+        setIdeaButtonStatus(false);
     }
 
     if (result.isError) {
         console.log("error");
     }
 
+    console.log(ideaButtonStatus);
     return (
         <>
             <button
@@ -133,7 +145,7 @@ function IdeasModal() {
                                     <select
                                         value={exercise.muscleGroupId}
                                         name="muscleGroupId"
-                                        onChange={handleChange}
+                                        onChange={handleMuscleGroupChange}
                                         className="form-select"
                                         id="inputGroupSelect01">
                                         <option value>
@@ -150,34 +162,59 @@ function IdeasModal() {
                                         })}
                                     </select>
                                 </div>
+
                                 <div>
-                                    <button type="button" onClick={getIdeas}>
-                                        Give me Ideas
-                                    </button>
-                                    <div className="input-group mb-3">
-                                        <label
-                                            className="input-group-text"
-                                            htmlFor="inputGroupSelect01">
-                                            Ideas
-                                        </label>
-                                        <select
-                                            value={exercise.name}
-                                            name="name"
-                                            onChange={handleChange}
-                                            className="form-select"
-                                            id="inputGroupSelect01">
-                                            <option value>
-                                                Choose Exercise
-                                            </option>
-                                            {ideas?.map((ex) => {
-                                                return (
-                                                    <option value={ex} key={ex}>
-                                                        {ex}
+                                    {mgSelected ? (
+                                        <>
+                                            <button
+                                                className="give-idea-button"
+                                                type="button"
+                                                onClick={getIdeas}>
+                                                Give me Ideas
+                                            </button>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <button
+                                                className="give-idea-button"
+                                                disabled
+                                                type="button"
+                                                onClick={getIdeas}>
+                                                Give me Ideas
+                                            </button>
+                                        </>
+                                    )}
+
+                                    {ideaButtonStatus && (
+                                        <>
+                                            <div className="input-group mb-3">
+                                                <label
+                                                    className="input-group-text"
+                                                    htmlFor="inputGroupSelect01">
+                                                    Ideas
+                                                </label>
+                                                <select
+                                                    value={exercise.name}
+                                                    name="name"
+                                                    onChange={handleChange}
+                                                    className="form-select"
+                                                    id="inputGroupSelect01">
+                                                    <option value>
+                                                        Choose Exercise
                                                     </option>
-                                                );
-                                            })}
-                                        </select>
-                                    </div>
+                                                    {ideas?.map((ex) => {
+                                                        return (
+                                                            <option
+                                                                value={ex}
+                                                                key={ex}>
+                                                                {ex}
+                                                            </option>
+                                                        );
+                                                    })}
+                                                </select>
+                                            </div>
+                                        </>
+                                    )}
                                 </div>
                                 <div className="input-group mb-3">
                                     <span

@@ -1,6 +1,5 @@
 import { useGetExercisesQuery } from "./ExerciseApi";
 import ExerciseModal from "./CreateExerciseModal";
-import IdeasModal from "./IdeasCreate";
 import { useGetTokenQuery } from "../Accounts/AuthApi";
 import Loading from "../Loading";
 import FilterDropdown from "./FilterDropdown";
@@ -17,7 +16,6 @@ function ExerciseMain() {
                 {tokenData && (
                     <>
                         <ExerciseModal />
-                        <IdeasModal />
                     </>
                 )}
                 <FilterDropdown />

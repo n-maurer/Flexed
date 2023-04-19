@@ -126,3 +126,25 @@
   right: 5px;
   bottom: 5px
 }
+
+.give-idea-button {
+  margin-bottom: 1rem;
+  background-color: #212529;
+  color: rgba(255, 255, 255, 0.944);
+  padding: .25rem 1.25rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 10rem;
+}
+
+.give-idea-button:hover {
+  background-color: #4a4a4a;
+}
+
+.give-idea-button:disabled {
+  background-color: #c0c0c0;
+  color: #a9a9a9;
+  cursor: not-allowed;
+}
