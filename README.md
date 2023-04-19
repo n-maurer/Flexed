@@ -24,6 +24,14 @@ Link: https://www.docker.com/products/docker-desktop/
 -   username: noahmaurer12@gmail.com
 -   password: flexed
 
+## PG-Admin Server Connection
+
+-   Host name: db
+-   Port: 5432
+-   Maintenance database: postgres
+-   Username: example_user
+-   Password: secret
+
 ## Technologies Used
 
 -   FastAPI

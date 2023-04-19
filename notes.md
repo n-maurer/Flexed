@@ -29,6 +29,8 @@ Sign in/ signup modals idea
 Pg-admin preloaded muscle groups:
 """
 INSERT INTO public.muscle_groups(name)
-VALUES ('Triceps'),('Biceps'),('Chest'),('Shoulders'),
-('Abs'),('Cardio'),('Back');
+VALUES ('Triceps'),('Biceps'),('Chest'),('Glutes'),
+('Abdominals'),('Forearms'),('Lats'),('Abductors'),('Adductors'),
+('Calves'),('Hamstrings'),('Lower Back'),('Middle Back'),
+('Neck'), ('Quadriceps'),('Traps'),('Shoulders');
 """

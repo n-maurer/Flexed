@@ -49,8 +49,12 @@ def filter_exercises(
 def get_exercise_ideas(
     muscle_group: str
 ):
+    if muscle_group == "Lower Back":
+        muscle_group = "Lower_Back"
+    elif muscle_group == "Middle Back":
+        muscle_group = "Middle_Back"
     api_key = "U580yuXNnRc4SItKznKaiA==9xN4msRCLUz1jvzb"
-    api_url = 'https://api.api-ninjas.com/v1/exercises?muscle={}'.format(muscle)
+    api_url = 'https://api.api-ninjas.com/v1/exercises?muscle={}'.format(muscle_group)
     response = requests.get(api_url, headers={'X-Api-Key': api_key})
     if response.status_code == requests.codes.ok:
         data = json.loads(response.text)
