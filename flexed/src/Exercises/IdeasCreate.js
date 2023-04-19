@@ -1,18 +1,23 @@
 import { Navigate } from "react-router-dom";
-import { useCreateExerciseMutation } from "./ExerciseApi";
+import {
+    useCreateExerciseMutation,
+    useGetExerciseIdeasQuery,
+} from "./ExerciseApi";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useGetMuscleGroupsQuery } from "../Muscle-Groups/muscleGroupApi";
 import { useGetTokenQuery } from "../Accounts/AuthApi";
 
-function ExerciseModal() {
+function IdeasModal() {
     const { data, error, isLoading } = useGetMuscleGroupsQuery();
     const {
         data: tokenData,
         error: tokenError,
         isLoading: tokenIsLoading,
     } = useGetTokenQuery();
-    // const [error, setError] = useState("");
+
+    const [ideas, setIdeas] = useState([]);
+
     const [createExercise, result] = useCreateExerciseMutation();
     const [exercise, setExercise] = useState({
         accountId: tokenData.account["id"],
@@ -22,6 +27,24 @@ function ExerciseModal() {
         sets: "",
         duration: "",
     });
+
+    async function getIdeas() {
+        let mg;
+        if (data) {
+            for (let x of data["muscle_groups"]) {
+                if (x["id"] === parseInt(exercise["muscleGroupId"])) {
+                    mg = x["name"];
+                }
+            }
+        }
+        await fetch(
+            `${process.env.REACT_APP_FLEXED_SERVICE_API_HOST}/exercises/${mg}/ideas`
+        )
+            .then((response) => response.json())
+            .then((data) => {
+                setIdeas(data);
+            });
+    }
 
     const handleChange = (event) => {
         setExercise({
@@ -58,14 +81,14 @@ function ExerciseModal() {
         <>
             <button
                 type="button"
-                className="circular-button"
+                className="idea-button circular-button"
                 data-bs-toggle="modal"
-                data-bs-target="#create-exercise">
-                Add Exercise
+                data-bs-target="#idea">
+                Exercise Ideas
             </button>
             <div
                 className="modal fade"
-                id="create-exercise"
+                id="idea"
                 data-bs-backdrop="static"
                 data-bs-keyboard="false"
                 tabIndex="-1"
@@ -77,7 +100,7 @@ function ExerciseModal() {
                             <h1
                                 className="modal-title fs-5"
                                 id="staticBackdropLabel">
-                                Create Exercise
+                                Test
                             </h1>
                             <button
                                 type="button"
@@ -126,6 +149,35 @@ function ExerciseModal() {
                                             );
                                         })}
                                     </select>
+                                </div>
+                                <div>
+                                    <button type="button" onClick={getIdeas}>
+                                        Give me Ideas
+                                    </button>
+                                    <div className="input-group mb-3">
+                                        <label
+                                            className="input-group-text"
+                                            htmlFor="inputGroupSelect01">
+                                            Ideas
+                                        </label>
+                                        <select
+                                            value={exercise.name}
+                                            name="name"
+                                            onChange={handleChange}
+                                            className="form-select"
+                                            id="inputGroupSelect01">
+                                            <option value>
+                                                Choose Exercise
+                                            </option>
+                                            {ideas?.map((ex) => {
+                                                return (
+                                                    <option value={ex} key={ex}>
+                                                        {ex}
+                                                    </option>
+                                                );
+                                            })}
+                                        </select>
+                                    </div>
                                 </div>
                                 <div className="input-group mb-3">
                                     <span
@@ -195,4 +247,4 @@ function ExerciseModal() {
         </>
     );
 }
-export default ExerciseModal;
+export default IdeasModal;

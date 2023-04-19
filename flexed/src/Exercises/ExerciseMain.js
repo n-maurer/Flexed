@@ -1,5 +1,6 @@
 import { useGetExercisesQuery } from "./ExerciseApi";
 import ExerciseModal from "./CreateExerciseModal";
+import IdeasModal from "./IdeasCreate";
 import { useGetTokenQuery } from "../Accounts/AuthApi";
 import Loading from "../Loading";
 import FilterDropdown from "./FilterDropdown";
@@ -13,7 +14,12 @@ function ExerciseMain() {
     return (
         <>
             <div className="ex-buttons">
-                {tokenData && <ExerciseModal />}
+                {tokenData && (
+                    <>
+                        <ExerciseModal />
+                        <IdeasModal />
+                    </>
+                )}
                 <FilterDropdown />
             </div>
 
