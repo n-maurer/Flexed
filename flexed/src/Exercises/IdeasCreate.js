@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useGetMuscleGroupsQuery } from "../Muscle-Groups/muscleGroupApi";
 import { useGetTokenQuery } from "../Accounts/AuthApi";
 
-function ExerciseModal() {
+function IdeasModal() {
     const { data, error, isLoading } = useGetMuscleGroupsQuery();
     const {
         data: tokenData,
@@ -93,10 +93,10 @@ function ExerciseModal() {
         <>
             <button
                 type="button"
-                className="circular-button"
+                className="idea-button circular-button"
                 data-bs-toggle="modal"
                 data-bs-target="#idea">
-                Add Exercise
+                Exercise Ideas
             </button>
             <div
                 className="modal fade"
@@ -112,7 +112,7 @@ function ExerciseModal() {
                             <h1
                                 className="modal-title fs-5"
                                 id="staticBackdropLabel">
-                                Add Exercise
+                                Test
                             </h1>
                             <button
                                 type="button"
@@ -284,4 +284,4 @@ function ExerciseModal() {
         </>
     );
 }
-export default ExerciseModal;
+export default IdeasModal;

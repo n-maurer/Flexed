@@ -13,7 +13,11 @@ function ExerciseMain() {
     return (
         <>
             <div className="ex-buttons">
-                {tokenData && <ExerciseModal />}
+                {tokenData && (
+                    <>
+                        <ExerciseModal />
+                    </>
+                )}
                 <FilterDropdown />
             </div>
 

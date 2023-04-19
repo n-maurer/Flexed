@@ -30,6 +30,10 @@ export const exerciseApi = createApi({
             }),
             invalidatesTags: ["ExerciseList"],
         }),
+        getExerciseIdeas: builder.query({
+            query: (mg) => `/exercises/${mg}/ideas`,
+            providesTags: ["ExerciseList"],
+        }),
     }),
 });
 export const {
@@ -37,4 +41,5 @@ export const {
     useCreateExerciseMutation,
     useFilterExercisesQuery,
     useDeleteExerciseMutation,
+    useGetExerciseIdeasQuery,
 } = exerciseApi;
