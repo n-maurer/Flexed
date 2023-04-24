@@ -35,6 +35,13 @@ export const workoutApi = createApi({
             query: () => "/we-table",
             providesTags: ["WorkoutList"],
         }),
+        deleteWorkout: builder.mutation({
+            query: (wo_id) => ({
+                url: `/workouts/${wo_id}`,
+                method: "delete",
+            }),
+            invalidatesTags: ["WorkoutList"],
+        }),
     }),
 });
 export const {
@@ -43,4 +50,5 @@ export const {
     useGetExerciseByWorkoutQuery,
     useAddExerciseMutation,
     useGetAllWEReltaionshipsQuery,
+    useDeleteWorkoutMutation,
 } = workoutApi;

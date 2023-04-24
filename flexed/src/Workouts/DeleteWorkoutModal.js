@@ -1,29 +1,33 @@
-import { useDeleteExerciseMutation } from "./ExerciseApi";
+import { useDeleteWorkoutMutation } from "./WorkoutApi";
 import { useEffect } from "react";
 
-function DeleteExerciseModal(props) {
-    const [deleteExercise, result] = useDeleteExerciseMutation();
+function DeleteWorkoutModal(props) {
+    const [deleteWorkout, result] = useDeleteWorkoutMutation();
 
     async function handleSubmit(e) {
         e.preventDefault();
-        deleteExercise(props.exercise_id);
+        deleteWorkout(props.workoutId);
     }
 
     if (result.isError) {
         console.log("error");
     }
+
+    const hashedId = `#deleteWO${props.workoutId}`;
+    const otherId = `deleteWO${props.workoutId}`;
+
     return (
         <>
             <button
                 className="delete-button"
                 type="button"
                 data-bs-toggle="modal"
-                data-bs-target="#deleteEx">
+                data-bs-target={hashedId}>
                 x
             </button>
             <div
                 className="modal fade"
-                id="deleteEx"
+                id={otherId}
                 data-bs-backdrop="static"
                 data-bs-keyboard="false"
                 tabIndex="-1"
@@ -65,4 +69,4 @@ function DeleteExerciseModal(props) {
         </>
     );
 }
-export default DeleteExerciseModal;
+export default DeleteWorkoutModal;

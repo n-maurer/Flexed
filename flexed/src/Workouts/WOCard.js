@@ -2,6 +2,7 @@ import { useGetExerciseByWorkoutQuery } from "./WorkoutApi";
 import AddExerciseModal from "./AddExerciseModal";
 import { useGetTokenQuery } from "../Accounts/AuthApi";
 import "./wo.css";
+import DeleteWorkoutModal from "./DeleteWorkoutModal";
 
 function WOCard(props) {
     const { data, error, isLoading } = useGetExerciseByWorkoutQuery(
@@ -13,7 +14,6 @@ function WOCard(props) {
         isLoading: tokenIsLoading,
     } = useGetTokenQuery();
     let propsId = toString(props.wo.id);
-    console.log(props);
 
     return (
         <div className="col" key={props.wo.id}>
@@ -40,12 +40,17 @@ function WOCard(props) {
                     {tokenData ? (
                         <>
                             {tokenData.account["id"] === props.wo.account_id ? (
-                                <div className="ex-modal">
-                                    <AddExerciseModal
-                                        wo={props.wo.id}
-                                        wo_name={props.wo.name}
+                                <>
+                                    <div className="ex-modal">
+                                        <AddExerciseModal
+                                            wo={props.wo.id}
+                                            wo_name={props.wo.name}
+                                        />
+                                    </div>
+                                    <DeleteWorkoutModal
+                                        workoutId={props.wo.id}
                                     />
-                                </div>
+                                </>
                             ) : (
                                 <></>
                             )}
