@@ -1,5 +1,6 @@
 import { useGetWorkoutDatesByAccountIdQuery } from "./DatesApi";
 import { Link } from "react-router-dom";
+import DeleteWorkoutDateModal from "./DeleteWorkoutDateModal";
 
 function CertainDaysWorkout(props) {
     const { data } = useGetWorkoutDatesByAccountIdQuery(props.userId);
@@ -26,6 +27,7 @@ function CertainDaysWorkout(props) {
                                                 </button>
                                             </Link>
                                         </div>
+                                        <DeleteWorkoutDateModal wdId={dt.id} />
                                     </div>
                                 </div>
                             );

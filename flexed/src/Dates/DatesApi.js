@@ -32,6 +32,13 @@ export const workoutDateApi = createApi({
                 `/workout-date/users/${account_id}/${date}`,
             providesTags: ["workoutDate"],
         }),
+        deleteWorkoutDate: builder.mutation({
+            query: (wd_id) => ({
+                url: `/workout-date/${wd_id}`,
+                method: "delete",
+            }),
+            invalidatesTags: ["workoutDate"],
+        }),
     }),
 });
 export const {
@@ -40,4 +47,5 @@ export const {
     useGetWorkoutByDateQuery,
     useGetWorkoutDatesByAccountIdQuery,
     useGetWorkoutDatesByAccountAndDateQuery,
+    useDeleteWorkoutDateMutation,
 } = workoutDateApi;
