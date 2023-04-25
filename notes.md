@@ -159,6 +159,86 @@ VALUES (1, 'Barbell hip thrust', 4, 10, 4, NULL),
 (1, 'Side-lying leg lift', 4, 10, 4, NULL),
 (1, 'Hip thrust with abduction', 4, 12, 3, NULL);
 
+Lats:
+INSERT INTO public.exercises(
+account_id, name, muscle_group_id, reps, sets, duration)
+VALUES (1, 'Lat pulldown', 7, '10-12', 3, NULL),
+(1, 'Seated cable row', 7, '8-10', 4, NULL),
+(1, 'Wide grip pulldown', 7, '12-15', 3, NULL),
+(1, 'Dumbbell pullover', 7, '10-12', 4, NULL),
+(1, 'T-bar row', 7, '8-10', 3, NULL),
+(1, 'Chin-up', 7, '12-15', 4, NULL),
+(1, 'Bent-over barbell row', 7, '10-12', 3, NULL),
+(1, 'One-arm dumbbell row', 7, '8-10', 4, NULL),
+(1, 'Reverse grip pulldown', 7, '12-15', 3, NULL),
+(1, 'Pull-up', 7, '10-12', 4, NULL),
+(1, 'Cable pullover', 7, '8-10', 3, NULL),
+(1, 'Kneeling one-arm lat pulldown', 7, '12-15', 4, NULL),
+(1, 'Barbell pullover', 7, '10-12', 3, NULL),
+(1, 'Hammer strength lat pulldown', 7, '8-10', 4, NULL),
+(1, 'Inverted row', 7, '12-15', 3, NULL),
+(1, 'Wide grip seated row', 7, '10-12', 4, NULL),
+(1, 'Single-arm machine row', 7, '8-10', 3, NULL),
+(1, 'Lat pulldown with resistance band', 7, '12-15', 4, NULL),
+(1, 'Close grip pulldown', 7, '10-12', 3, NULL),
+(1, 'One-arm cable pulldown', 7, '8-10', 4, NULL);
+
+Forearms:
+INSERT INTO public.exercises(
+account_id, name, muscle_group_id, reps, sets, duration)
+VALUES (1, 'Reverse Barbell Curls', 6, 8, 3, DEFAULT),
+(1, 'Farmers Walk', 6, 12, 4, DEFAULT),
+(1, 'Wrist Curl', 6, 10, 3, DEFAULT),
+(1, 'Plate Pinches', 6, 15, 4, DEFAULT),
+(1, 'Hammer Curls', 6, 12, 3, DEFAULT),
+(1, 'Reverse Grip Barbell Curls', 6, 10, 4, DEFAULT),
+(1, 'Grip Strengthener', 6, 15, 3, DEFAULT),
+(1, 'Wrist Roller', 6, 8, 4, DEFAULT),
+(1, 'Reverse Preacher Curls', 6, 12, 3, DEFAULT),
+(1, 'Dumbbell Wrist Twist', 6, 15, 4, DEFAULT);
+
+Abductors:
+INSERT INTO public.exercises(
+account_id, name, muscle_group_id, reps, sets, duration)
+VALUES (1, 'Cable Hip Abduction', 8, 12, 3, NULL),
+(1, 'Seated Leg Abductor', 8, 10, 4, NULL),
+(1, 'Side Lying Clam', 8, 15, 3, NULL),
+(1, 'Lateral Band Walk', 8, 12, 4, NULL),
+(1, 'Plié Squat', 8, 10, 3, NULL),
+(1, 'Standing Abductor Lift', 8, 15, 3, NULL),
+(1, 'Fire Hydrant', 8, 12, 4, NULL),
+(1, 'Banded Lateral Walk', 8, 15, 3, NULL),
+(1, 'Sumo Squat', 8, 10, 4, NULL),
+(1, 'Curtsy Lunge', 8, 12, 3, NULL);
+
+Adductors:
+INSERT INTO public.exercises(
+account_id, name, muscle_group_id, reps, sets, duration)
+VALUES (1, 'Sumo squats', 9, 10, 3, null),
+(1, 'Adductor machine', 9, 12, 4, null),
+(1, 'Inner thigh squeeze', 9, 15, 3, null),
+(1, 'Cossack squats', 9, 8, 4, null),
+(1, 'Side leg raises', 9, 12, 3, null),
+(1, 'Lateral lunges', 9, 10, 4, null),
+(1, 'Frog pumps', 9, 15, 3, null),
+(1, 'Banded leg press', 9, 12, 4, null),
+(1, 'Barbell lunges', 9, 8, 3, null),
+(1, 'Adductor stretch', 9, 15, 4, null);
+
+Calves:
+INSERT INTO public.exercises(
+account_id, name, muscle_group_id, reps, sets, duration)
+VALUES (1, 'Standing Calf Raises', 10, '12-15', 3, NULL),
+(1, 'Seated Calf Raises', 10, '8-10', 4, NULL),
+(1, 'Donkey Calf Raises', 10, '10-12', 3, NULL),
+(1, 'Single Leg Calf Raises', 10, '12-15', 4, NULL),
+(1, 'Calf Press on Leg Press Machine', 10, '8-10', 3, NULL),
+(1, 'Barbell Calf Raises', 10, '12-15', 4, NULL),
+(1, 'Toe Press on Leg Press Machine', 10, '10-12', 3, NULL),
+(1, 'Standing Dumbbell Calf Raises', 10, '8-10', 4, NULL),
+(1, 'Seated Machine Calf Raises', 10, '12-15', 3, NULL),
+(1, 'Jump Rope', 10, '10-12', 4, NULL);
+
 All:
 INSERT INTO public.exercises(
 account_id, name, muscle_group_id, reps, sets, duration)
@@ -261,4 +341,64 @@ VALUES (1, 'Triceps pushdown', 1, 8, 3, NULL),
 (1, 'Toe touchers', 5, 12, 4, NULL),
 (1, 'Seated Russian twist', 5, 20, 3, NULL),
 (1, 'Hip raises', 5, 15, 4, NULL),
-(1, 'L-sit', 5, 10, 3, NULL);
+(1, 'L-sit', 5, 10, 3, NULL),
+(1, 'Lat pulldown', 7, '10-12', 3, NULL),
+(1, 'Seated cable row', 7, '8-10', 4, NULL),
+(1, 'Wide grip pulldown', 7, '12-15', 3, NULL),
+(1, 'Dumbbell pullover', 7, '10-12', 4, NULL),
+(1, 'T-bar row', 7, '8-10', 3, NULL),
+(1, 'Chin-up', 7, '12-15', 4, NULL),
+(1, 'Bent-over barbell row', 7, '10-12', 3, NULL),
+(1, 'One-arm dumbbell row', 7, '8-10', 4, NULL),
+(1, 'Reverse grip pulldown', 7, '12-15', 3, NULL),
+(1, 'Pull-up', 7, '10-12', 4, NULL),
+(1, 'Cable pullover', 7, '8-10', 3, NULL),
+(1, 'Kneeling one-arm lat pulldown', 7, '12-15', 4, NULL),
+(1, 'Barbell pullover', 7, '10-12', 3, NULL),
+(1, 'Hammer strength lat pulldown', 7, '8-10', 4, NULL),
+(1, 'Inverted row', 7, '12-15', 3, NULL),
+(1, 'Wide grip seated row', 7, '10-12', 4, NULL),
+(1, 'Single-arm machine row', 7, '8-10', 3, NULL),
+(1, 'Lat pulldown with resistance band', 7, '12-15', 4, NULL),
+(1, 'Close grip pulldown', 7, '10-12', 3, NULL),
+(1, 'One-arm cable pulldown', 7, '8-10', 4, NULL),
+(1, 'Reverse Barbell Curls', 6, 8, 3, DEFAULT),
+(1, 'Farmers Walk', 6, 12, 4, DEFAULT),
+(1, 'Wrist Curl', 6, 10, 3, DEFAULT),
+(1, 'Plate Pinches', 6, 15, 4, DEFAULT),
+(1, 'Hammer Curls', 6, 12, 3, DEFAULT),
+(1, 'Reverse Grip Barbell Curls', 6, 10, 4, DEFAULT),
+(1, 'Grip Strengthener', 6, 15, 3, DEFAULT),
+(1, 'Wrist Roller', 6, 8, 4, DEFAULT),
+(1, 'Reverse Preacher Curls', 6, 12, 3, DEFAULT),
+(1, 'Dumbbell Wrist Twist', 6, 15, 4, DEFAULT),
+(1, 'Cable Hip Abduction', 8, 12, 3, NULL),
+(1, 'Seated Leg Abductor', 8, 10, 4, NULL),
+(1, 'Side Lying Clam', 8, 15, 3, NULL),
+(1, 'Lateral Band Walk', 8, 12, 4, NULL),
+(1, 'Plié Squat', 8, 10, 3, NULL),
+(1, 'Standing Abductor Lift', 8, 15, 3, NULL),
+(1, 'Fire Hydrant', 8, 12, 4, NULL),
+(1, 'Banded Lateral Walk', 8, 15, 3, NULL),
+(1, 'Sumo Squat', 8, 10, 4, NULL),
+(1, 'Curtsy Lunge', 8, 12, 3, NULL),
+(1, 'Sumo squats', 9, 10, 3, null),
+(1, 'Adductor machine', 9, 12, 4, null),
+(1, 'Inner thigh squeeze', 9, 15, 3, null),
+(1, 'Cossack squats', 9, 8, 4, null),
+(1, 'Side leg raises', 9, 12, 3, null),
+(1, 'Lateral lunges', 9, 10, 4, null),
+(1, 'Frog pumps', 9, 15, 3, null),
+(1, 'Banded leg press', 9, 12, 4, null),
+(1, 'Barbell lunges', 9, 8, 3, null),
+(1, 'Adductor stretch', 9, 15, 4, null),
+(1, 'Standing Calf Raises', 10, '12-15', 3, NULL),
+(1, 'Seated Calf Raises', 10, '8-10', 4, NULL),
+(1, 'Donkey Calf Raises', 10, '10-12', 3, NULL),
+(1, 'Single Leg Calf Raises', 10, '12-15', 4, NULL),
+(1, 'Calf Press on Leg Press Machine', 10, '8-10', 3, NULL),
+(1, 'Barbell Calf Raises', 10, '12-15', 4, NULL),
+(1, 'Toe Press on Leg Press Machine', 10, '10-12', 3, NULL),
+(1, 'Standing Dumbbell Calf Raises', 10, '8-10', 4, NULL),
+(1, 'Seated Machine Calf Raises', 10, '12-15', 3, NULL),
+(1, 'Jump Rope', 10, '10-12', 4, NULL),
