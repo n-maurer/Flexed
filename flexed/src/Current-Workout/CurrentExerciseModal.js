@@ -2,8 +2,11 @@ import EditCurrentExerciseModal from "./EditCurrentExerciseModal";
 import { useGetLastWeightQuery } from "./ExDateWoAPI";
 import "./cw.css";
 
-function CurrentExerciseModal({ exercise }) {
+function CurrentExerciseModal({ exercise, currentDate }) {
     const { data, isLoading } = useGetLastWeightQuery(exercise.exercise_id);
+
+    console.log(data[1].most_recent_date);
+    console.log(currentDate);
 
     return (
         <div className="col" key={exercise.id}>
@@ -25,21 +28,19 @@ function CurrentExerciseModal({ exercise }) {
                         </>
                     ) : (
                         <>
-                            {data.length > 1 ? (
+                            {data.length > 1 && (
                                 <>
-                                    {data[1].weight_done !== "None" ? (
-                                        <>
-                                            <h6>
-                                                Last Weight Done:{" "}
-                                                {data[1].weight_done}
-                                            </h6>
-                                        </>
-                                    ) : (
-                                        <></>
-                                    )}
+                                    {data[1].weight_done !== "None" &&
+                                        data[1].most_recent_date !==
+                                            currentDate && (
+                                            <>
+                                                <h6>
+                                                    Last Weight Done:{" "}
+                                                    {data[1].weight_done}
+                                                </h6>
+                                            </>
+                                        )}
                                 </>
-                            ) : (
-                                <></>
                             )}
                         </>
                     )}

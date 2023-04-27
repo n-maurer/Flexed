@@ -43,13 +43,24 @@ function EditCurrentExerciseModal({ exercise }) {
     const target = `f${exercise.id}`;
     return (
         <>
-            <button
-                type="button"
-                className="circular-button-small"
-                data-bs-toggle="modal"
-                data-bs-target={targetHash}>
-                Complete
-            </button>
+            {currentExercise.weight_done === "None" ? (
+                <button
+                    type="button"
+                    className="circular-button-small"
+                    data-bs-toggle="modal"
+                    data-bs-target={targetHash}>
+                    Complete
+                </button>
+            ) : (
+                <button
+                    type="button"
+                    className="circular-button-small"
+                    data-bs-toggle="modal"
+                    data-bs-target={targetHash}>
+                    Update
+                </button>
+            )}
+
             <div
                 className="modal fade"
                 id={target}

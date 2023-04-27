@@ -13,7 +13,7 @@ function ExerciseCard(props) {
                 type="button"
                 data-bs-toggle="modal"
                 data-bs-target={hashedId}
-                className="list-group-item list-group-item-action no-margin text-left">
+                className="list-group-item list-group-item-action no-margin text-left text-capitalize">
                 {props.exercise.name}
                 <p className="float-right">
                     <i className="arrow right"></i>
@@ -37,7 +37,7 @@ function ExerciseCard(props) {
                                 <a
                                     href={searchLink}
                                     target="_blank"
-                                    className="name-link">
+                                    className="name-link text-capitalize">
                                     {props.exercise.name}
                                 </a>
                             </h5>

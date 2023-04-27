@@ -66,6 +66,8 @@
 }
 
 .circular-button-small {
+  width: 50%;
+  align-self: center;
   margin-top: 2rem;
   margin-bottom: 1rem;
   background-color: #212529;

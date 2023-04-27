@@ -12159,3 +12159,7 @@ header.masthead h1, header.masthead .h1 {
 .float-right {
   float: right;
 }
+
+.text-capitalize {
+  text-transform: capitalize;
+}

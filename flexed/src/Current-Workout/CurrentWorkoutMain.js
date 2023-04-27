@@ -31,6 +31,7 @@ function CurrentWorkoutMain() {
                                         <CurrentExerciseModal
                                             key={exercise.id}
                                             exercise={exercise}
+                                            currentDate={params.date}
                                         />
                                     );
                                 })}
