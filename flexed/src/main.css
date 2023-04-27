@@ -12135,6 +12135,10 @@ header.masthead h1, header.masthead .h1 {
   margin: 0;
 }
 
+.no-margin-top {
+  margin-top: 0;
+}
+
 .mg-top-5 {
   margin-top: 5px;
 }

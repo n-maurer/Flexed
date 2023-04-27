@@ -46,7 +46,7 @@ function EditCurrentExerciseModal({ exercise }) {
             {currentExercise.weight_done === "None" ? (
                 <button
                     type="button"
-                    className="circular-button-small"
+                    className="circular-button-small no-margin-top"
                     data-bs-toggle="modal"
                     data-bs-target={targetHash}>
                     Complete
@@ -54,7 +54,7 @@ function EditCurrentExerciseModal({ exercise }) {
             ) : (
                 <button
                     type="button"
-                    className="circular-button-small"
+                    className="circular-button-small no-margin-top"
                     data-bs-toggle="modal"
                     data-bs-target={targetHash}>
                     Update

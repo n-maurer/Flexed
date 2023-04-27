@@ -5,9 +5,6 @@ import "./cw.css";
 function CurrentExerciseModal({ exercise, currentDate }) {
     const { data, isLoading } = useGetLastWeightQuery(exercise.exercise_id);
 
-    console.log(data[1].most_recent_date);
-    console.log(currentDate);
-
     return (
         <div className="col" key={exercise.id}>
             <div className="card h-100">
