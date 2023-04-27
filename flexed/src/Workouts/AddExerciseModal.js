@@ -62,7 +62,7 @@ function AddExerciseModal(props) {
         <>
             <button
                 type="button"
-                className="circular-button-small"
+                className="circular-button-small-wo"
                 data-bs-toggle="modal"
                 data-bs-target={hashTarget}>
                 Add Exercises

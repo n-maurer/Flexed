@@ -8,7 +8,6 @@ import SignupModal from "./Accounts/SignupModal";
 
 function NavBar() {
     const { data, error, isLoading } = useGetTokenQuery();
-    // console.log(data);
 
     return (
         <nav
@@ -46,7 +45,7 @@ function NavBar() {
                     aria-label="Vertical button group">
                     {data ? (
                         <>
-                            <NavLink to="/calendar">
+                            <NavLink to={`/calendar/${data["account"]["id"]}`}>
                                 <button type="button" className="btn btn-dark">
                                     My Calendar
                                 </button>

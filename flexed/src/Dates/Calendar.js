@@ -5,8 +5,10 @@ import "./calendar.css";
 import EDModal from "./AddWorkoutDateModal";
 import CertainDaysWorkout from "./CertainDatesWorkouts";
 import { useGetTokenQuery } from "../Accounts/AuthApi";
+import { useParams } from "react-router-dom";
 
 function MyCalendar() {
+    const params = useParams();
     const {
         data: tokenData,
         error: tokenError,
@@ -36,21 +38,32 @@ function MyCalendar() {
     return (
         <>
             {tokenData ? (
-                <div>
-                    <div className="calendar-container center-calendar">
-                        <Calendar onChange={setDate} value={date} />
-                    </div>
-                    <EDModal date={longDate} shortDate={shortDate} />
-                    {tokenIsLoading ? (
-                        <></>
+                <>
+                    {tokenData["account"]["id"] === parseInt(params.id) ? (
+                        <>
+                            <div>
+                                <div className="calendar-container center-calendar">
+                                    <Calendar onChange={setDate} value={date} />
+                                </div>
+                                <EDModal
+                                    date={longDate}
+                                    shortDate={shortDate}
+                                />
+                                {tokenIsLoading ? (
+                                    <></>
+                                ) : (
+                                    <CertainDaysWorkout
+                                        shortDate={shortDate}
+                                        longDate={longDate}
+                                        userId={tokenData.account["id"]}
+                                    />
+                                )}
+                            </div>
+                        </>
                     ) : (
-                        <CertainDaysWorkout
-                            shortDate={shortDate}
-                            longDate={longDate}
-                            userId={tokenData.account["id"]}
-                        />
+                        <>You do not have access to this page</>
                     )}
-                </div>
+                </>
             ) : (
                 <>You need to login to view this page</>
             )}

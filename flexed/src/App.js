@@ -27,7 +27,10 @@ function App() {
                         <Route path="/muscle-groups" element={<MGMain />} />
                         <Route path="/exercises" element={<ExerciseMain />} />
                         <Route path="/workouts" element={<WorkoutMain />} />
-                        <Route path="/calendar" element={<CalendarPage />} />
+                        <Route
+                            path="/calendar/:id"
+                            element={<CalendarPage />}
+                        />
                         <Route
                             path="/current-workout/:date/:wd/:id"
                             element={<CurrentWorkoutMain />}
