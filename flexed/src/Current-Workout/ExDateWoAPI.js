@@ -16,7 +16,7 @@ export const exWoDateRelationship = createApi({
             invalidatesTags: ["exWoDateRelationship"],
         }),
         getExWoDateByDate: builder.query({
-            query: (date) => `/ex-wo-date/${date}`,
+            query: (x) => `/ex-wo-date/${x[0]}/${x[1]}`,
             providesTags: ["exWoDateRelationship"],
         }),
         editExWoDate: builder.mutation({
@@ -36,7 +36,7 @@ export const exWoDateRelationship = createApi({
             invalidatesTags: ["exWoDateRelationship"],
         }),
         getLastWeight: builder.query({
-            query: (ex_id) => `/ex-wo-date/${ex_id}/recent`,
+            query: (x) => `/ex-wo-date/${x[1]}/recent/${x[0]}/weight`,
             providesTags: ["exWoDateRelationship"],
         }),
         getExDateWoAll: builder.query({

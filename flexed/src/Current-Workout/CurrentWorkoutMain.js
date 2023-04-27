@@ -2,10 +2,20 @@ import { useGetExWoDateByDateQuery } from "./ExDateWoAPI";
 import { useParams } from "react-router-dom";
 import CurrentExerciseModal from "./CurrentExerciseModal";
 import "./cw.css";
+import { useGetTokenQuery } from "../Accounts/AuthApi";
 
 function CurrentWorkoutMain() {
+    // const {
+    //     data: tokenData,
+    //     error: tokenError,
+    //     isLoading: tokenIsLoading,
+    // } = useGetTokenQuery();
     const params = useParams();
-    const { data, isLoading } = useGetExWoDateByDateQuery(params.date);
+
+    const { data, isLoading } = useGetExWoDateByDateQuery([
+        params.date,
+        parseInt(params.account),
+    ]);
 
     return (
         <div className="cw">
@@ -22,9 +32,8 @@ function CurrentWorkoutMain() {
                             {data?.table
                                 .filter(
                                     (exercise) =>
-                                        exercise["account_id"] === 1 &&
                                         exercise["ewd_id"] ===
-                                            parseInt(params.wd)
+                                        parseInt(params.wd)
                                 )
                                 .map((exercise) => {
                                     return (

@@ -3,7 +3,10 @@ import { useGetLastWeightQuery } from "./ExDateWoAPI";
 import "./cw.css";
 
 function CurrentExerciseModal({ exercise, currentDate }) {
-    const { data, isLoading } = useGetLastWeightQuery(exercise.exercise_id);
+    const { data, isLoading } = useGetLastWeightQuery([
+        exercise.exercise_id,
+        exercise.account_id,
+    ]);
 
     return (
         <div className="col" key={exercise.id}>
@@ -25,7 +28,7 @@ function CurrentExerciseModal({ exercise, currentDate }) {
                         </>
                     ) : (
                         <>
-                            {data.length > 1 && (
+                            {data?.length > 1 && (
                                 <>
                                     {data[1].weight_done !== "None" &&
                                         data[1].most_recent_date !==

@@ -21,7 +21,7 @@ function CertainDaysWorkout(props) {
                                         <div className="card-body">
                                             <h5>{dt.name}</h5>
                                             <Link
-                                                to={`/current-workout/${props.longDate}/${dt.workout_id}/${dt.id}`}>
+                                                to={`/current-workout/${props.longDate}/${dt.workout_id}/${dt.id}/${props.userId}`}>
                                                 <button
                                                     type="button"
                                                     className="circular-button-small">

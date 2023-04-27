@@ -36,13 +36,14 @@ def delete_we_relationship(
     return repo.delete(ewd_id)
 
 
-@router.get("/ex-wo-date/{date}")
+@router.get("/ex-wo-date/{date}/{account_id}")
 def get_exercises_by_date(
     date: str,
+    account_id:int,
     repo: EWDRepository = Depends(),
 ):
     # workout_name = repo.get_workout_name_by_id(wd_id)
-    return {"table": repo.get_exercises_by_date(date)}
+    return {"table": repo.get_exercises_by_date(date, account_id)}
 
 
 @router.put("/ex-wo-date/{ewd_id}", response_model=Union[bool, ExWoDateOut])
@@ -53,9 +54,10 @@ def update_ewd(
 ) -> Union[bool, ExWoDateOut]:
     return repo.update(ewd_id, ewd)
 
-@router.get("/ex-wo-date/{ex_id}/recent")
+@router.get("/ex-wo-date/{account_id}/recent/{ex_id}/weight")
 def get_last_weight_by_ex_id(
     ex_id: int,
+    account_id:int,
     repo: EWDRepository = Depends()
 ):
-    return repo.get_last_weight_by_ex_id(ex_id)
+    return repo.get_last_weight_by_ex_id(ex_id,account_id)

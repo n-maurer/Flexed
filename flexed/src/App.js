@@ -32,7 +32,7 @@ function App() {
                             element={<CalendarPage />}
                         />
                         <Route
-                            path="/current-workout/:date/:wd/:id"
+                            path="/current-workout/:date/:wd/:id/:account"
                             element={<CurrentWorkoutMain />}
                         />
                         <Route

@@ -134,11 +134,12 @@ class EWDRepository:
                 return results
 
 
-    def get_exercises_by_date(self, date: str):
+    def get_exercises_by_date(self, date: str, account_id: int):
         with pool.connection() as conn:
             with conn.cursor() as cur:
                 params = [
-                    date
+                    date,
+                    account_id
                 ]
                 cur.execute(
                     """
@@ -152,7 +153,7 @@ class EWDRepository:
                     RIGHT JOIN exercises AS e
                         ON (ewd.exercise_id = e.id)
 
-                    WHERE wo_date = %s
+                    WHERE wo_date = %s AND ewd.account_id = %s
                     """,
                     params,
                 )
@@ -165,17 +166,18 @@ class EWDRepository:
 
                 return results
 
-    def get_last_weight_by_ex_id(self, ex_id: int):
+    def get_last_weight_by_ex_id(self, ex_id: int, account_id:int):
         with pool.connection() as conn:
             with conn.cursor() as cur:
                 params = [
-                    ex_id
+                    ex_id,
+                    account_id
                 ]
                 cur.execute(
                     """
                     SELECT weight_done, duration_done, MAX(wo_date) AS most_recent_date
                     FROM ex_wo_dates
-                    WHERE exercise_id = %s
+                    WHERE exercise_id = %s AND account_id = %s
                     GROUP BY weight_done, duration_done, wo_date
                     ORDER BY wo_date DESC
                     """,
