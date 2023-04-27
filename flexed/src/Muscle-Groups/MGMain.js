@@ -29,7 +29,7 @@ function MGMain() {
                                             <p className="card-text"></p>
                                             <Link to={`/exercises/${mg.id}`}>
                                                 <button className="circular-button-small view-ex">
-                                                    View {mg.name} Exercises
+                                                    View Exercises
                                                 </button>
                                             </Link>
                                         </div>
