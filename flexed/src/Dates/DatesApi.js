@@ -42,6 +42,7 @@ export const workoutDateApi = createApi({
     }),
 });
 export const {
+    useGetWorkoutDatesQuery,
     useWorkoutDatesQuery,
     useCreateWorkoutDateMutation,
     useGetWorkoutByDateQuery,

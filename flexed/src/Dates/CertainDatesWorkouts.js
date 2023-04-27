@@ -14,12 +14,14 @@ function CertainDaysWorkout(props) {
                         .filter((x) => x["wo_date"] === props.longDate)
                         .map((dt) => {
                             return (
-                                <div className="col" key={dt.id}>
-                                    <div className="card h-100">
+                                <div
+                                    className="col current-wo-column"
+                                    key={dt.id}>
+                                    <div className="card h-100 current-wo-on-calendar ">
                                         <div className="card-body">
                                             <h5>{dt.name}</h5>
                                             <Link
-                                                to={`/current-workout/${props.longDate}/${dt.workout_id}`}>
+                                                to={`/current-workout/${props.longDate}/${dt.workout_id}/${dt.id}`}>
                                                 <button
                                                     type="button"
                                                     className="circular-button-small">
@@ -27,7 +29,11 @@ function CertainDaysWorkout(props) {
                                                 </button>
                                             </Link>
                                         </div>
-                                        <DeleteWorkoutDateModal wdId={dt.id} />
+                                        <DeleteWorkoutDateModal
+                                            longDate={props.longDate}
+                                            wdId={dt.id}
+                                            dateData={dt}
+                                        />
                                     </div>
                                 </div>
                             );

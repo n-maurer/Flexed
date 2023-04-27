@@ -12167,3 +12167,11 @@ header.masthead h1, header.masthead .h1 {
 .text-capitalize {
   text-transform: capitalize;
 }
+
+.current-wo-on-calendar {
+  max-width: 545px;
+}
+
+.current-wo-column {
+  text-align: -webkit-center;
+}

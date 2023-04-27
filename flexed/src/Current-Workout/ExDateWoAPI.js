@@ -39,9 +39,22 @@ export const exWoDateRelationship = createApi({
             query: (ex_id) => `/ex-wo-date/${ex_id}/recent`,
             providesTags: ["exWoDateRelationship"],
         }),
+        getExDateWoAll: builder.query({
+            query: () => `/ex-wo-date`,
+            providesTags: ["exWoDateRelationship"],
+        }),
+        deleteExWorkoutDate: builder.mutation({
+            query: (ewd_id) => ({
+                url: `/ex-wo-date/${ewd_id}`,
+                method: "delete",
+            }),
+            invalidatesTags: ["exWoDateRelationship"],
+        }),
     }),
 });
 export const {
+    useDeleteExWorkoutDateMutation,
+    useGetExDateWoAllQuery,
     useCreateExWoDateRelationshipMutation,
     useGetExWoDateByDateQuery,
     useEditExWoDateMutation,

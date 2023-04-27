@@ -1,13 +1,27 @@
 import { useDeleteWorkoutDateMutation } from "./DatesApi";
-import { useEffect } from "react";
+import { useGetExDateWoAllQuery } from "../Current-Workout/ExDateWoAPI";
+import { useDeleteExWorkoutDateMutation } from "../Current-Workout/ExDateWoAPI";
 
 function DeleteWorkoutDateModal(props) {
+    // console.log("props:", props);
     const [deleteWorkoutDate, result] = useDeleteWorkoutDateMutation();
+    const { data: woDateData } = useGetExDateWoAllQuery();
+    const [deleteExWoDate] = useDeleteExWorkoutDateMutation();
+    // console.log("date", props.longDate);
 
     async function handleSubmit(e) {
         e.preventDefault();
         deleteWorkoutDate(props.wdId);
+        for (let i of woDateData["ewd-tables"]) {
+            if (
+                i["ewd_id"] === props.dateData["workout_id"] &&
+                i["wo_date"] === props.longDate
+            )
+                deleteExWoDate(i["id"]);
+        }
     }
+
+    // console.log(woDateData);
 
     if (result.isError) {
         console.log("error");
