@@ -41,23 +41,25 @@ function MyCalendar() {
                 <>
                     {tokenData["account"]["id"] === parseInt(params.id) ? (
                         <>
-                            <div>
+                            <div className="calendar-page-container">
                                 <div className="calendar-container center-calendar">
                                     <Calendar onChange={setDate} value={date} />
                                 </div>
-                                <EDModal
-                                    date={longDate}
-                                    shortDate={shortDate}
-                                />
-                                {tokenIsLoading ? (
-                                    <></>
-                                ) : (
-                                    <CertainDaysWorkout
+                                <div className="right-container">
+                                    <EDModal
+                                        date={longDate}
                                         shortDate={shortDate}
-                                        longDate={longDate}
-                                        userId={tokenData.account["id"]}
                                     />
-                                )}
+                                    {tokenIsLoading ? (
+                                        <></>
+                                    ) : (
+                                        <CertainDaysWorkout
+                                            shortDate={shortDate}
+                                            longDate={longDate}
+                                            userId={tokenData.account["id"]}
+                                        />
+                                    )}
+                                </div>
                             </div>
                         </>
                     ) : (

@@ -12175,3 +12175,35 @@ header.masthead h1, header.masthead .h1 {
 .current-wo-column {
   text-align: -webkit-center;
 }
+
+
+
+
+
+@media only screen and (min-width: 644px) {
+  .calendar-page-container {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .calendar-container {
+    flex-basis: 300px;
+    /* Fixed width */
+    height: 100%;
+    /* Fill available height */
+    overflow-y: auto;
+    /* Add scroll bar when content overflows */
+  }
+
+  .right-container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    /* Take up remaining width */
+  }
+
+  /* Large screens */
+  .calendar-container {
+    flex-basis: 80%;
+  }
+}
