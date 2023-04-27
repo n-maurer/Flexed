@@ -24,10 +24,29 @@ function ExerciseMain() {
             {isLoading === true ? (
                 <Loading />
             ) : (
+                // <div>
+                //     <h2>All Exercises</h2>
+
+                //     <div className="row row-cols-1 row-cols-md-3 g-4 mg-top-5">
+                //         {data?.exercises.map((exercise) => {
+                //             return (
+                //                 <a
+                //                     href="#"
+                //                     class="list-group-item list-group-item-action no-margin text-left">
+                //                     {exercise.name}
+                //                     <p className="float-right">
+                //                         <i class="arrow right"></i>
+                //                     </p>
+                //                 </a>
+                //             );
+                //         })}
+                //     </div>
+                // </div>
+
                 <div>
                     <h2>All Exercises</h2>
                     <div className="cards">
-                        <div className="row row-cols-1 row-cols-md-3 g-4">
+                        <div className="row row-cols-1 row-cols-md-3 g-4 mg-top-5">
                             {data?.exercises.map((exercise) => {
                                 return (
                                     <ExerciseCard

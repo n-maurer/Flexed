@@ -22,8 +22,13 @@
 .filter-dropdown:hover {
     background-color: #8c0101;
     margin-left: 1em;
+
 }
 
 .name-link {
     text-decoration: none;
+}
+
+.name-link:hover {
+    text-decoration: underline;
 }

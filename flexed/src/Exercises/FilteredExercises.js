@@ -31,7 +31,7 @@ function FilteredExercises() {
                     <h2>{data.exercises[0]?.muscle_group}</h2>
 
                     <div className="cards">
-                        <div className="row row-cols-1 row-cols-md-3 g-4">
+                        <div className="row row-cols-1 row-cols-md-3 g-4 mg-top-5">
                             {data?.exercises.map((exercise) => {
                                 return (
                                     <ExerciseCard
